@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edeki Okoh</title>
+  <meta name="description" content="Edeki Okoh — projects and writing. Building local-first tools, agent runtimes, and knowledge systems.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="./index.html">Edeki Okoh</a>
+      <nav class="nav">
+        <a href="#projects">Projects</a>
+        <a href="./blog/index.html">Writing</a>
+        <a href="https://github.com/Okohedeki">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro">
+      <h1>I build local-first tools, agent runtimes, and systems that keep working after I walk away.</h1>
+      <p>Engineer working across AI agents, media pipelines, and knowledge systems. This is where I keep what I'm currently building and the occasional note about how it's going.</p>
+    </div>
+
+    <section id="projects">
+      <div class="section-head">
+        <h2>Currently building</h2>
+        <span class="aside">active in the last 3 weeks</span>
+      </div>
+
+      <div class="projects">
+
+        <article class="project">
+          <a class="title" href="https://github.com/Okohedeki/airlock">Airlock <span class="arrow">↗</span></a>
+          <p>Run any AI agent — LangGraph, smolagents, CrewAI, OpenAI Agents, Claude — as a controlled, self-hosted HTTP service. You get an OpenAI-compatible URL and control over every step, tool call, and dollar from inside the loop. Workers run as Docker containers by default.</p>
+          <div class="meta">
+            <span class="tag live">● most active</span>
+            <span class="tag">agent runtime</span>
+            <span class="dot">·</span>
+            <span class="tag">+ showcase &amp; landing site</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="title" href="https://github.com/Okohedeki/VaultOP">VaultOP <span class="arrow">↗</span></a>
+          <p>Local-first, MIT-licensed media pipeline for content creators. The vault is the spine — an analyzed, encrypted, content-addressed library — and editing, compilations, and blur are operations on it. On-device AI (Whisper transcription, CLIP tags, object-detection blur). Nothing leaves the machine.</p>
+          <div class="meta">
+            <span class="tag">electron</span>
+            <span class="tag">on-device AI</span>
+            <span class="tag">v0.1.6</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="title" href="https://github.com/Okohedeki/NANTA">Markov <span class="arrow">↗</span></a>
+          <p>Save once, your knowledge keeps growing. Markov turns the links you'd normally bookmark and forget — TikToks, Reddit threads, YouTube, articles, PDFs — into living <em>Chains</em> that file themselves by subject and keep pulling in new sources on their own. Expo mobile app on a FastAPI + Supabase backend.</p>
+          <div class="meta">
+            <span class="tag">expo / mobile</span>
+            <span class="tag">v1, pre-deploy</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="title" href="https://github.com/Okohedeki/markov-engine">markov-engine <span class="arrow">↗</span></a>
+          <p>The storage-agnostic knowledge engine behind Markov. Give it a URL; it extracts and transcribes content, pulls a summary plus entities and relationships with an LLM, embeds it, and clusters it into the most similar existing Chain — then grows that Chain by searching the web. Pluggable LLM/embedding backends, runs with no keys.</p>
+          <div class="meta">
+            <span class="tag">python</span>
+            <span class="tag">pgvector / LLM</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="title" href="https://github.com/Okohedeki/MathRL">Function War RL <span class="arrow">↗</span></a>
+          <p>A reinforcement-learning setup for Function War, a 2-player turn-based artillery game where each shot is a math curve <code>y = f(x)</code>. V1 is the simplest end-to-end pipeline: a headless game core, one Gymnasium env, and a compact PPO trainer on PufferLib. Beat the baseline first, add sophistication later.</p>
+          <div class="meta">
+            <span class="tag">RL / PPO</span>
+            <span class="tag">gymnasium</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="title" href="https://github.com/Okohedeki/loopy">loopy <span class="arrow">↗</span></a>
+          <p>The loop, not the prompt, is the primitive. A local web app that turns Hermes-agent into a whole-product builder: paste a goal, and loopy holds an authoritative graph of work, drives the agent through the unblocked nodes, verifies each against external criteria, and runs until the product is done.</p>
+          <div class="meta">
+            <span class="tag">agent harness</span>
+            <span class="tag">foundation</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="title" href="https://github.com/Okohedeki/doordash-penance">doordash-penance <span class="arrow">↗</span></a>
+          <p>A commitment device. Every DoorDash order automatically donates 3× the total to a charity you pick — and it's built so you can't quietly switch it off. The bank-watching token is written to a write-only secret; the only way to stop it is to log into your bank and revoke access. If you want it stopped, you have to mean it.</p>
+          <div class="meta">
+            <span class="tag">plaid</span>
+            <span class="tag">cloudflare</span>
+            <span class="tag">just for fun</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="writing">
+      <div class="section-head">
+        <h2>Writing</h2>
+        <a class="aside" href="./blog/index.html" style="text-decoration:none">all posts →</a>
+      </div>
+      <ul class="posts">
+        <li>
+          <time datetime="2026-06-22">Jun 22, 2026</time>
+          <a href="./blog/posts/2026-06-22-why-this-blog-exists.html">
+            Why this blog exists
+            <span class="excerpt">A working log for the things I'm building, and why I keep them local-first.</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 Edeki Okoh ·
+      <a href="https://github.com/Okohedeki">GitHub</a> ·
+      <a href="mailto:okohedeki@gmail.com">Email</a>
+    </div>
+  </footer>
+</body>
+</html>
