@@ -193,6 +193,48 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 }
 
 /* ============================================================
+   Recently shipped (commit feed)
+   ============================================================ */
+.feed { display: flex; flex-direction: column; }
+.feed-item {
+  display: grid; grid-template-columns: 3.6rem 8.5rem 1fr; gap: 0 1.1rem;
+  align-items: baseline; padding: 0.7rem 0; border-top: 1px solid var(--line-soft);
+}
+.feed-item:first-child { border-top: 0; }
+.feed-item time { font-family: var(--mono); font-size: 0.76rem; color: var(--faint); white-space: nowrap; }
+.repo-chip {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 5px; padding: 0.1rem 0.45rem; justify-self: start; white-space: nowrap;
+  transition: background 0.16s;
+}
+.repo-chip:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.feed-text { color: var(--ink); font-size: 0.96rem; }
+.feed-updated { margin-top: 1.2rem; font-family: var(--mono); font-size: 0.74rem; color: var(--faint); }
+@media (max-width: 620px) {
+  .feed-item { grid-template-columns: 1fr; gap: 0.25rem; padding: 0.85rem 0; }
+  .repo-chip { margin-bottom: 0.1rem; }
+}
+
+/* ============================================================
+   Experience / résumé summary
+   ============================================================ */
+.exp { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; align-items: start; }
+.exp .summary p { color: var(--muted); max-width: 40rem; }
+.exp .summary p strong { color: var(--ink); font-weight: 600; }
+.exp .summary p + p { margin-top: 1rem; }
+.exp .role { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 1rem; }
+.exp .role span { color: var(--faint); }
+.exp .panel { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 1.4rem 1.5rem; }
+.exp .panel h4 { font-family: var(--mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint); font-weight: 500; margin-bottom: 1rem; }
+.metric { display: flex; align-items: baseline; gap: 0.7rem; padding: 0.55rem 0; border-top: 1px solid var(--line-soft); }
+.metric:first-of-type { border-top: 0; }
+.metric .big { font-family: var(--display); font-weight: 600; font-size: 1.5rem; color: var(--accent); line-height: 1; min-width: 4.5rem; }
+.metric .lbl { font-size: 0.86rem; color: var(--muted); }
+.exp .resume-actions { margin-top: 1.4rem; display: flex; gap: 0.7rem; flex-wrap: wrap; }
+@media (max-width: 720px) { .exp { grid-template-columns: 1fr; gap: 1.6rem; } }
+
+/* ============================================================
    Toolkit
    ============================================================ */
 .toolkit { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: 12px; overflow: hidden; }

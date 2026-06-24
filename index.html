@@ -22,7 +22,7 @@
         <a href="#toolkit" class="hide-sm">Toolkit</a>
         <a href="./blog/index.html">Writing</a>
         <a href="https://github.com/Okohedeki">GitHub</a>
-        <a href="./resume.pdf" class="cta">Résumé</a>
+        <a href="./resume.html" class="cta">Résumé</a>
       </nav>
     </div>
   </header>
@@ -42,7 +42,7 @@
         </p>
         <div class="status reveal d3"><span class="pulse"></span> Open to new engineering roles</div>
         <div class="actions reveal d4">
-          <a class="btn btn-primary" href="./resume.pdf">Résumé <span class="arr">↓</span></a>
+          <a class="btn btn-primary" href="./resume.html">Résumé <span class="arr">↓</span></a>
           <a class="btn btn-ghost" href="https://github.com/Okohedeki">GitHub <span class="arr">↗</span></a>
           <a class="btn btn-ghost" href="mailto:okohedeki@gmail.com">Email <span class="arr">→</span></a>
         </div>
@@ -164,11 +164,125 @@
       </div>
     </section>
 
+    <!-- ===== Recently shipped ===== -->
+    <section class="section" id="shipped">
+      <div class="wrap">
+        <div class="section-head">
+          <h2><span class="idx">02</span> Recently shipped</h2>
+          <span class="note">auto-pulled from commits across my repos</span>
+        </div>
+        <ul class="feed">
+        <!-- ACTIVITY:START -->
+        <li class="feed-item">
+          <time datetime="2026-06-24">Jun 24</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/markov-engine">markov-engine</a>
+          <span class="feed-text">Token-bucket rate limiting for outbound discovery</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-22">Jun 22</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/MathRL">MathRL</a>
+          <span class="feed-text">Add training graph: plot.py + metrics.csv logging in train.py</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-21">Jun 21</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/MathRL">MathRL</a>
+          <span class="feed-text">Add replay viewer: play.py + replay.html</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-21">Jun 21</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/VaultOP">VaultOP</a>
+          <span class="feed-text">Apply emotional-design plays — success moments, empty states, micro-interactions</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-21">Jun 21</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/MathRL">MathRL</a>
+          <span class="feed-text">V1 reset: archive over-engineered v0, add minimal PufferLib PPO pipeline</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-21">Jun 21</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/VaultOP">VaultOP</a>
+          <span class="feed-text">One sidebar destination per feature (Vault·Tag·Build·Cuts·Promos·Activity)</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-21">Jun 21</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/VaultOP">VaultOP</a>
+          <span class="feed-text">Polish the sidebar — line icons + collapsible rail</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-15">Jun 15</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/airlock">airlock</a>
+          <span class="feed-text">Real exposure flip (internal ↔ public)</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-15">Jun 15</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/airlock">airlock</a>
+          <span class="feed-text">Surface model identity, persistent skill on/off, drawer launch + Detect</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-15">Jun 15</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/airlock">airlock</a>
+          <span class="feed-text">No login wall — open straight to the dashboard</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-14">Jun 14</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/markov-engine">markov-engine</a>
+          <span class="feed-text">Cap avenue concurrency to avoid DDG throttling</span>
+        </li>
+        <li class="feed-item">
+          <time datetime="2026-06-14">Jun 14</time>
+          <a class="repo-chip" href="https://github.com/Okohedeki/markov-engine">markov-engine</a>
+          <span class="feed-text">Multi-avenue, platform-aware search + novelty/freshness</span>
+        </li>
+        <!-- ACTIVITY:END -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Experience / résumé ===== -->
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <h2><span class="idx">03</span> Experience</h2>
+          <span class="note">the short version</span>
+        </div>
+        <div class="exp">
+          <div class="summary">
+            <p class="role">Senior Software Developer · eBacon <span>— Phoenix, AZ · 2019–present</span></p>
+            <p>
+              I've spent <strong>6+ years</strong> building the data layer and backend behind an
+              in-house <strong>401(k) platform</strong> for an ~$150M-AUM business — owning database
+              architecture, data models, and ETL in <strong>SQL Server / T-SQL, C#, and Python</strong>.
+            </p>
+            <p>
+              I put production AI into real engineering work: I built a <strong>pgvector retrieval
+              system</strong> over our issue, commit, diff, and PR history so Claude can pinpoint the
+              likely files and propose fixes — lifting first-pass fix rate ~30% behind full pre-merge
+              review. I've cut core transaction processing time up to <strong>80%</strong>, led a
+              multi-thousand-client migration off a legacy provider, and productionized a
+              <strong>dbt + CI/CD</strong> transformation layer. B.S. Economics &amp; B.S. Mathematics,
+              both <em>cum laude</em>, from Arizona State.
+            </p>
+            <div class="resume-actions">
+              <a class="btn btn-primary" href="./resume.html">Full résumé <span class="arr">→</span></a>
+              <a class="btn btn-ghost" href="./Edeki-Okoh-Resume.docx">Download .docx <span class="arr">↓</span></a>
+            </div>
+          </div>
+          <aside class="panel">
+            <h4>By the numbers</h4>
+            <div class="metric"><span class="big">~30%</span><span class="lbl">higher first-pass fix rate via pgvector + LLM retrieval</span></div>
+            <div class="metric"><span class="big">−80%</span><span class="lbl">core transaction processing time</span></div>
+            <div class="metric"><span class="big">~40%</span><span class="lbl">fewer reporting inconsistencies after dbt + CI/CD</span></div>
+            <div class="metric"><span class="big">$150M</span><span class="lbl">AUM platform owned end-to-end</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Toolkit ===== -->
     <section class="section" id="toolkit">
       <div class="wrap">
         <div class="section-head">
-          <h2><span class="idx">02</span> Toolkit</h2>
+          <h2><span class="idx">04</span> Toolkit</h2>
           <span class="note">what I reach for</span>
         </div>
         <div class="toolkit">
@@ -220,7 +334,7 @@
     <section class="section" id="writing">
       <div class="wrap">
         <div class="section-head">
-          <h2><span class="idx">03</span> Writing</h2>
+          <h2><span class="idx">05</span> Writing</h2>
         </div>
         <a class="writing-card" href="./blog/index.html">
           <div class="wc-text">
@@ -239,7 +353,7 @@
       <div class="links">
         <a href="https://github.com/Okohedeki">GitHub</a>
         <a href="mailto:okohedeki@gmail.com">Email</a>
-        <a href="./resume.pdf">Résumé</a>
+        <a href="./resume.html">Résumé</a>
       </div>
     </div>
   </footer>

@@ -3,11 +3,12 @@
 My personal site — half résumé, half blog. Static HTML/CSS, zero build step, zero
 dependencies (fonts load from Google Fonts).
 
-- **`index.html`** — home: hero, *Selected work* (projects + current state), toolkit, writing link.
+- **`index.html`** — home: hero, *Selected work*, *Recently shipped* feed, *Experience*, toolkit, writing.
+- **`resume.html`** — full, print-ready résumé page (Cmd-P → Save as PDF). `Edeki-Okoh-Resume.docx` is the download.
 - **`blog/index.html`** — the writing index (mine to fill).
 - **`blog/posts/`** — one HTML file per post (`YYYY-MM-DD-slug.html`) + `_template.html`.
 - **`styles.css`** — the whole design (dark editorial: Fraunces + Hanken Grotesk + JetBrains Mono).
-- **`resume.pdf`** — drop your résumé here at the repo root; the "Résumé" links already point to it.
+- **`scripts/update-activity.mjs`** — regenerates the *Recently shipped* feed from commits (see below).
 
 ## Run it locally
 
@@ -24,10 +25,26 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 3. In `blog/index.html`, replace the `.empty-state` block with a `<ul class="posts">` and
    add one `<li>` per post (newest first) — the exact markup is in a comment there.
 
-## Add your résumé
+## Résumé
 
-Drop a `resume.pdf` at the repo root. The "Résumé" button, nav link, and footer link all
-already point to `./resume.pdf`, so it goes live the moment the file exists.
+The "Résumé" links point to `resume.html` (a styled, print-ready page) and offer
+`Edeki-Okoh-Resume.docx` as a download. To update: edit `resume.html`, replace the
+`.docx`, and adjust the *Experience* summary in `index.html`. Prefer a real PDF? Drop one
+in and repoint the links.
+
+## Recently shipped feed (auto)
+
+The *Recently shipped* list on the home page is generated from recent commits across the
+public project repos (airlock, VaultOP, markov-engine, MathRL). It leads with features and
+milestones — `fix`/`chore`/`docs`/`test` commits are filtered out (tune the `DROP` regexes
+in the script to taste).
+
+```bash
+node scripts/update-activity.mjs   # rewrites the <!-- ACTIVITY --> block in index.html
+```
+
+`.github/workflows/activity.yml` runs this every Monday (and on demand via *Run workflow*),
+commits any change, and redeploys. Add or reorder projects in the `REPOS` array.
 
 ## Update the projects section
 
