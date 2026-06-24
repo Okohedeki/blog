@@ -4,45 +4,59 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Writing — Edeki Okoh</title>
-  <meta name="description" content="Notes on building local-first tools, agent runtimes, and knowledge systems.">
+  <meta name="description" content="Notes and build logs by Edeki Okoh.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
   <header class="site-head">
     <div class="wrap">
-      <a class="brand" href="../index.html">Edeki Okoh</a>
+      <a class="brand" href="../index.html"><span class="mark">EO</span> edeki okoh</a>
       <nav class="nav">
-        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#work" class="hide-sm">Work</a>
+        <a href="../index.html#toolkit" class="hide-sm">Toolkit</a>
         <a href="./index.html" aria-current="page">Writing</a>
         <a href="https://github.com/Okohedeki">GitHub</a>
+        <a href="../resume.pdf" class="cta">Résumé</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <div class="intro">
+    <div class="page-title reveal">
       <h1>Writing</h1>
-      <p>A working log — short notes on what I'm building and what I'm learning while I build it.</p>
+      <p>A working log — short notes on what I'm building and what I learn while building it.</p>
     </div>
 
-    <section>
-      <ul class="posts">
-        <li>
-          <time datetime="2026-06-22">Jun 22, 2026</time>
-          <a href="./posts/2026-06-22-why-this-blog-exists.html">
-            Why this blog exists
-            <span class="excerpt">A working log for the things I'm building, and why I keep them local-first.</span>
-          </a>
-        </li>
-      </ul>
+    <section class="section" style="border-top:0; padding-top:1rem;">
+      <!--
+        ADD A POST:
+        1. Copy posts/_template.html → posts/YYYY-MM-DD-your-slug.html and write it.
+        2. Replace the .empty-state block below with a <ul class="posts"> … </ul>,
+           then add an <li> per post (newest first), like:
+
+        <ul class="posts">
+          <li><a href="./posts/2026-07-01-my-post.html">
+            <time datetime="2026-07-01">Jul 1, 2026</time>
+            <span><span class="pt">My post title</span>
+            <span class="pe">One-line summary.</span></span>
+          </a></li>
+        </ul>
+      -->
+      <div class="empty-state reveal d1">No posts yet — first one coming soon.</div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      © 2026 Edeki Okoh ·
-      <a href="https://github.com/Okohedeki">GitHub</a> ·
-      <a href="mailto:okohedeki@gmail.com">Email</a>
+      <span class="copy">© 2026 Edeki Okoh — built by hand, no framework.</span>
+      <div class="links">
+        <a href="https://github.com/Okohedeki">GitHub</a>
+        <a href="mailto:okohedeki@gmail.com">Email</a>
+        <a href="../resume.pdf">Résumé</a>
+      </div>
     </div>
   </footer>
 </body>

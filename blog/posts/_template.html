@@ -3,8 +3,8 @@
   TO ADD A POST:
   1. Copy this file to:  YYYY-MM-DD-some-slug.html
   2. Fill in the title, date, and body below.
-  3. Add a matching <li> at the top of ../index.html AND ../../index.html
-     (the home page shows the most recent post).
+  3. In ../index.html, swap the .empty-state for a <ul class="posts"> and add an <li>
+     for this post (newest first). The list-item markup is shown in that file's comment.
 -->
 <html lang="en">
 <head>
@@ -12,16 +12,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>POST TITLE — Edeki Okoh</title>
   <meta name="description" content="One-line summary of the post.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
   <header class="site-head">
     <div class="wrap">
-      <a class="brand" href="../../index.html">Edeki Okoh</a>
+      <a class="brand" href="../../index.html"><span class="mark">EO</span> edeki okoh</a>
       <nav class="nav">
-        <a href="../../index.html#projects">Projects</a>
+        <a href="../../index.html#work" class="hide-sm">Work</a>
         <a href="../index.html">Writing</a>
         <a href="https://github.com/Okohedeki">GitHub</a>
+        <a href="../../resume.pdf" class="cta">Résumé</a>
       </nav>
     </div>
   </header>
@@ -34,8 +38,8 @@
       <p>First paragraph.</p>
 
       <h2>A subhead</h2>
-      <p>More text. Use <code>&lt;code&gt;</code> for inline code, <code>&lt;blockquote&gt;</code> for pull quotes,
-      and <code>&lt;pre&gt;&lt;code&gt;</code> for code blocks.</p>
+      <p>More text. Use <code>&lt;code&gt;</code> for inline code, <code>&lt;blockquote&gt;</code> for
+      pull quotes, and <code>&lt;pre&gt;&lt;code&gt;</code> for code blocks.</p>
 
       <a class="back" href="../index.html">← Back to writing</a>
     </article>
@@ -43,9 +47,12 @@
 
   <footer>
     <div class="wrap">
-      © 2026 Edeki Okoh ·
-      <a href="https://github.com/Okohedeki">GitHub</a> ·
-      <a href="mailto:okohedeki@gmail.com">Email</a>
+      <span class="copy">© 2026 Edeki Okoh — built by hand, no framework.</span>
+      <div class="links">
+        <a href="https://github.com/Okohedeki">GitHub</a>
+        <a href="mailto:okohedeki@gmail.com">Email</a>
+        <a href="../../resume.pdf">Résumé</a>
+      </div>
     </div>
   </footer>
 </body>

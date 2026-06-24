@@ -1,11 +1,13 @@
 # blog
 
-My personal site and blog. Static HTML/CSS, zero build step, zero dependencies.
+My personal site — half résumé, half blog. Static HTML/CSS, zero build step, zero
+dependencies (fonts load from Google Fonts).
 
-- **`index.html`** — home: intro + the *Currently building* projects section + latest posts.
-- **`blog/index.html`** — full post list.
-- **`blog/posts/`** — one HTML file per post (`YYYY-MM-DD-slug.html`).
-- **`styles.css`** — the whole design. Light/dark via `prefers-color-scheme`.
+- **`index.html`** — home: hero, *Selected work* (projects + current state), toolkit, writing link.
+- **`blog/index.html`** — the writing index (mine to fill).
+- **`blog/posts/`** — one HTML file per post (`YYYY-MM-DD-slug.html`) + `_template.html`.
+- **`styles.css`** — the whole design (dark editorial: Fraunces + Hanken Grotesk + JetBrains Mono).
+- **`resume.pdf`** — drop your résumé here at the repo root; the "Résumé" links already point to it.
 
 ## Run it locally
 
@@ -19,12 +21,18 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 
 1. Copy `blog/posts/_template.html` to `blog/posts/YYYY-MM-DD-your-slug.html`.
 2. Fill in the title, date, and body.
-3. Add a `<li>` at the top of the list in **`blog/index.html`** (and on the home page `index.html` if you want it featured).
+3. In `blog/index.html`, replace the `.empty-state` block with a `<ul class="posts">` and
+   add one `<li>` per post (newest first) — the exact markup is in a comment there.
+
+## Add your résumé
+
+Drop a `resume.pdf` at the repo root. The "Résumé" button, nav link, and footer link all
+already point to `./resume.pdf`, so it goes live the moment the file exists.
 
 ## Update the projects section
 
-The *Currently building* cards in `index.html` track repos with commits in the last
-~3 weeks. To regenerate that list later:
+The *Selected work* cards in `index.html` track repos with commits in the last ~3 weeks.
+To regenerate that list later:
 
 ```bash
 for d in $(find ~/Documents -maxdepth 2 -name .git -type d); do

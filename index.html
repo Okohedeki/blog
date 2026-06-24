@@ -3,100 +3,244 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Edeki Okoh</title>
-  <meta name="description" content="Edeki Okoh — projects and writing. Building local-first tools, agent runtimes, and knowledge systems.">
+  <title>Edeki Okoh — Software Engineer</title>
+  <meta name="description" content="Edeki Okoh — software engineer building AI agent runtimes, local-first applications, and ML systems. Selected work and writing.">
+  <meta property="og:title" content="Edeki Okoh — Software Engineer">
+  <meta property="og:description" content="Building AI agent runtimes, local-first apps, and ML systems.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-head">
     <div class="wrap">
-      <a class="brand" href="./index.html">Edeki Okoh</a>
+      <a class="brand" href="./index.html"><span class="mark">EO</span> edeki okoh</a>
       <nav class="nav">
-        <a href="#projects">Projects</a>
+        <a href="#work" class="hide-sm">Work</a>
+        <a href="#toolkit" class="hide-sm">Toolkit</a>
         <a href="./blog/index.html">Writing</a>
         <a href="https://github.com/Okohedeki">GitHub</a>
+        <a href="./resume.pdf" class="cta">Résumé</a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <div class="intro">
-      <h1>I build local-first tools, agent runtimes, and systems that keep working after I walk away.</h1>
-      <p>Engineer working across AI agents, media pipelines, and knowledge systems. This is where I keep what I'm currently building and the occasional note about how it's going.</p>
-    </div>
-
-    <section id="projects">
-      <div class="section-head">
-        <h2>Currently building</h2>
-        <span class="aside">active in the last 3 weeks</span>
-      </div>
-
-      <div class="projects">
-
-        <article class="project">
-          <a class="title" href="https://github.com/Okohedeki/airlock">Airlock <span class="arrow">↗</span></a>
-          <p>Run any AI agent — LangGraph, smolagents, CrewAI, OpenAI Agents, Claude — as a controlled, self-hosted HTTP service. You get an OpenAI-compatible URL and control over every step, tool call, and dollar from inside the loop. Workers run as Docker containers by default.</p>
-          <div class="meta">
-            <span class="tag live">● most active</span>
-            <span class="tag">agent runtime</span>
-            <span class="dot">·</span>
-            <span class="tag">+ showcase &amp; landing site</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="title" href="https://github.com/Okohedeki/VaultOP">VaultOP <span class="arrow">↗</span></a>
-          <p>Local-first, MIT-licensed media pipeline for content creators. The vault is the spine — an analyzed, encrypted, content-addressed library — and editing, compilations, and blur are operations on it. On-device AI (Whisper transcription, CLIP tags, object-detection blur). Nothing leaves the machine.</p>
-          <div class="meta">
-            <span class="tag">electron</span>
-            <span class="tag">on-device AI</span>
-            <span class="tag">v0.1.6</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="title" href="https://github.com/Okohedeki/markov-engine">markov-engine <span class="arrow">↗</span></a>
-          <p>The storage-agnostic knowledge engine behind Markov. Give it a URL; it extracts and transcribes content, pulls a summary plus entities and relationships with an LLM, embeds it, and clusters it into the most similar existing Chain — then grows that Chain by searching the web. Pluggable LLM/embedding backends, runs with no keys.</p>
-          <div class="meta">
-            <span class="tag">python</span>
-            <span class="tag">pgvector / LLM</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="title" href="https://github.com/Okohedeki/MathRL">Function War RL <span class="arrow">↗</span></a>
-          <p>A reinforcement-learning setup for Function War, a 2-player turn-based artillery game where each shot is a math curve <code>y = f(x)</code>. V1 is the simplest end-to-end pipeline: a headless game core, one Gymnasium env, and a compact PPO trainer on PufferLib. Beat the baseline first, add sophistication later.</p>
-          <div class="meta">
-            <span class="tag">RL / PPO</span>
-            <span class="tag">gymnasium</span>
-          </div>
-        </article>
-
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="kicker reveal">Software Engineer · AI &amp; Systems</p>
+        <h1 class="reveal d1">I build <em>agent runtimes</em>,<br>local-first tools &amp;<br>ML systems.</h1>
+        <p class="lede reveal d2">
+          I'm <strong>Edeki Okoh</strong> — an engineer who likes hard, end-to-end systems: an
+          agent runtime you can actually control, a media app where nothing leaves the machine,
+          a knowledge engine that grows on its own. I ship across the stack, from
+          <strong>TypeScript &amp; React</strong> down to <strong>Python ML pipelines</strong> and
+          signed native binaries.
+        </p>
+        <div class="status reveal d3"><span class="pulse"></span> Open to new engineering roles</div>
+        <div class="actions reveal d4">
+          <a class="btn btn-primary" href="./resume.pdf">Résumé <span class="arr">↓</span></a>
+          <a class="btn btn-ghost" href="https://github.com/Okohedeki">GitHub <span class="arr">↗</span></a>
+          <a class="btn btn-ghost" href="mailto:okohedeki@gmail.com">Email <span class="arr">→</span></a>
+        </div>
       </div>
     </section>
 
-    <section id="writing">
-      <div class="section-head">
-        <h2>Writing</h2>
-        <a class="aside" href="./blog/index.html" style="text-decoration:none">all posts →</a>
+    <!-- ===== Selected work ===== -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <h2><span class="idx">01</span> Selected work</h2>
+          <span class="note">shipping &amp; active · last 3 weeks</span>
+        </div>
+
+        <article class="project">
+          <span class="num">01</span>
+          <div class="body">
+            <div class="title-row">
+              <h3><a href="https://github.com/Okohedeki/airlock">airlock <span class="ext">↗</span></a></h3>
+              <span class="tagline">agent control plane</span>
+            </div>
+            <p class="desc">
+              Run any AI agent — LangGraph, smolagents, CrewAI, OpenAI Agents, Claude — as a
+              controlled, self-hosted HTTP service. <b>Today:</b> a Python worker shipped as a
+              <b>Docker image</b> owns the agent loop and serves an <b>OpenAI-compatible
+              <code>/v1/chat/completions</code></b> endpoint with SSE step-streaming, run-control
+              routes, a live <code>/console</code>, and <code>/metrics</code>. A TypeScript npm CLI
+              operates it. Proven by a containerized end-to-end test grid across six harnesses.
+            </p>
+            <div class="stack">
+              <span class="chip status">● most active</span>
+              <span class="chip">Python</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">Docker</span>
+              <span class="chip">SSE streaming</span>
+              <span class="chip">OpenAI-compatible API</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <span class="num">02</span>
+          <div class="body">
+            <div class="title-row">
+              <h3><a href="https://github.com/Okohedeki/VaultOP">VaultOP <span class="ext">↗</span></a></h3>
+              <span class="tagline">local-first media studio</span>
+            </div>
+            <p class="desc">
+              MIT-licensed media pipeline for creators where <b>nothing leaves the machine</b>.
+              <b>Today (v0.2.2):</b> drag-drop footage is content-hashed, <b>AES-256-GCM encrypted</b>
+              (key in the OS keychain), transcoded, and scene-split into a searchable library. One
+              click builds vertical teasers and cross-library compilations; a <b>mandatory human blur
+              gate</b> guards export. On-device AI runs locally — <b>Whisper</b> transcription,
+              <b>CLIP</b> tags, object-detection blur prefill — via transformers.js. Signed &amp;
+              notarized macOS + Windows builds; drivable headless via CLI and MCP.
+            </p>
+            <div class="stack">
+              <span class="chip status">● v0.2.2 shipped</span>
+              <span class="chip">Electron</span>
+              <span class="chip">React 19</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">SQLite</span>
+              <span class="chip">ffmpeg</span>
+              <span class="chip">transformers.js</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <span class="num">03</span>
+          <div class="body">
+            <div class="title-row">
+              <h3><a href="https://github.com/Okohedeki/markov-engine">markov-engine <span class="ext">↗</span></a></h3>
+              <span class="tagline">self-growing knowledge engine</span>
+            </div>
+            <p class="desc">
+              A storage-agnostic engine that turns saved links — articles, PDFs, YouTube/TikTok/Reddit,
+              audio — into living <b>Chains</b> of knowledge. <b>Today:</b> give it a URL and it
+              extracts &amp; transcribes content, pulls a summary plus entities/relationships with an
+              LLM, embeds it, and <b>clusters</b> it into the nearest Chain — then <b>grows</b> that
+              Chain by searching the web and <b>synthesizes</b> articles across its sources. All
+              persistence sits behind one <code>Store</code> interface (SQLite ships default); LLM and
+              embedding backends are pluggable and run with no keys.
+            </p>
+            <div class="stack">
+              <span class="chip status">● open-source engine</span>
+              <span class="chip">Python</span>
+              <span class="chip">LLM / RAG</span>
+              <span class="chip">embeddings</span>
+              <span class="chip">pgvector / SQLite</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <span class="num">04</span>
+          <div class="body">
+            <div class="title-row">
+              <h3><a href="https://github.com/Okohedeki/MathRL">Function War — RL <span class="ext">↗</span></a></h3>
+              <span class="tagline">reinforcement learning</span>
+            </div>
+            <p class="desc">
+              An RL setup for a 2-player turn-based artillery game where each shot is a math curve
+              <code>y = f(x)</code>. <b>Today (V1):</b> a deterministic, tested headless game core
+              (19 tests), a single minimal <b>Gymnasium</b> env, a tiny continuous actor-critic, and a
+              compact <b>PPO</b> trainer over <b>PufferLib</b>'s vectorized envs — with eval win-rate
+              against scripted and random opponents. Deliberately stripped down: beat the baseline
+              first, add sophistication later.
+            </p>
+            <div class="stack">
+              <span class="chip status">● V1 training</span>
+              <span class="chip">PyTorch</span>
+              <span class="chip">PPO</span>
+              <span class="chip">Gymnasium</span>
+              <span class="chip">PufferLib</span>
+            </div>
+          </div>
+        </article>
       </div>
-      <ul class="posts">
-        <li>
-          <time datetime="2026-06-22">Jun 22, 2026</time>
-          <a href="./blog/posts/2026-06-22-why-this-blog-exists.html">
-            Why this blog exists
-            <span class="excerpt">A working log for the things I'm building, and why I keep them local-first.</span>
-          </a>
-        </li>
-      </ul>
+    </section>
+
+    <!-- ===== Toolkit ===== -->
+    <section class="section" id="toolkit">
+      <div class="wrap">
+        <div class="section-head">
+          <h2><span class="idx">02</span> Toolkit</h2>
+          <span class="note">what I reach for</span>
+        </div>
+        <div class="toolkit">
+          <div class="tool-group">
+            <h4>Languages</h4>
+            <ul>
+              <li>TypeScript</li>
+              <li>Python</li>
+              <li>JavaScript</li>
+              <li>SQL</li>
+              <li>Bash</li>
+            </ul>
+          </div>
+          <div class="tool-group">
+            <h4>AI &amp; ML</h4>
+            <ul>
+              <li>LLM agents &amp; tool-use</li>
+              <li>RAG &amp; embeddings</li>
+              <li>PyTorch · PPO · RL</li>
+              <li>Whisper · CLIP · ONNX</li>
+              <li>transformers.js</li>
+            </ul>
+          </div>
+          <div class="tool-group">
+            <h4>Frontend</h4>
+            <ul>
+              <li>React 19</li>
+              <li>Electron</li>
+              <li>HTML &amp; CSS</li>
+              <li>Design systems</li>
+              <li>Static sites</li>
+            </ul>
+          </div>
+          <div class="tool-group">
+            <h4>Systems &amp; Infra</h4>
+            <ul>
+              <li>Docker</li>
+              <li>FastAPI · Node</li>
+              <li>SQLite · Postgres</li>
+              <li>GitHub Actions · CI</li>
+              <li>Code signing &amp; notarization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Writing (their space) ===== -->
+    <section class="section" id="writing">
+      <div class="wrap">
+        <div class="section-head">
+          <h2><span class="idx">03</span> Writing</h2>
+        </div>
+        <a class="writing-card" href="./blog/index.html">
+          <div class="wc-text">
+            <h3>Notes &amp; build logs</h3>
+            <p>Short writing on the things above — what I'm building and what I learn while building it.</p>
+          </div>
+          <span class="wc-go">Read writing →</span>
+        </a>
+      </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      © 2026 Edeki Okoh ·
-      <a href="https://github.com/Okohedeki">GitHub</a> ·
-      <a href="mailto:okohedeki@gmail.com">Email</a>
+      <span class="copy">© 2026 Edeki Okoh — built by hand, no framework.</span>
+      <div class="links">
+        <a href="https://github.com/Okohedeki">GitHub</a>
+        <a href="mailto:okohedeki@gmail.com">Email</a>
+        <a href="./resume.pdf">Résumé</a>
+      </div>
     </div>
   </footer>
 </body>
