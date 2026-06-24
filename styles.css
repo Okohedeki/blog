@@ -183,10 +183,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .project .desc b { color: var(--ink); font-weight: 600; }
 .project .stack { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
 .chip {
+  display: inline-flex; align-items: center; gap: 0.4rem; line-height: 1;
   font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
-  border: 1px solid var(--line); border-radius: 5px; padding: 0.18rem 0.5rem; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 5px; padding: 0.22rem 0.5rem; background: var(--surface);
 }
 .chip.status { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
+.chip.status::before {
+  content: ""; width: 0.42rem; height: 0.42rem; border-radius: 50%;
+  background: currentColor; flex: 0 0 auto;
+}
 @media (max-width: 560px) {
   .project { grid-template-columns: 1fr; gap: 0; }
   .project .num { display: none; }
