@@ -20,7 +20,6 @@
       <nav class="nav">
         <a href="#work" class="hide-sm">Work</a>
         <a href="./learnings/index.html">Learnings</a>
-        <a href="./blog/index.html">Writing</a>
         <a href="https://github.com/Okohedeki">GitHub</a>
         <a href="./resume.html" class="cta">Résumé</a>
       </nav>
@@ -35,8 +34,8 @@
         <h1>Edeki Okoh</h1>
         <p class="lede">
           Senior software developer focused on data and backend systems. Outside of work I build
-          across the stack — an agent runtime, a local-first media app, a self-growing knowledge
-          engine — and right now I'm going deep on <strong>GPU / CUDA kernel development</strong>.
+          across the stack — persistent agent computers, a voice-driven orchestrator, a
+          self-growing knowledge engine. Mostly things I wanted to exist.
         </p>
         <div class="status"><span class="dot"></span> Open to new engineering roles</div>
         <div class="actions">
@@ -52,31 +51,22 @@
       <div class="wrap">
         <div class="section-head">
           <h2><span class="idx">01</span> Projects</h2>
-          <span class="note">active in the last few weeks</span>
+          <span class="note">what I'm building, and why</span>
         </div>
 
         <article class="project">
           <span class="num">01</span>
           <div class="body">
             <div class="title-row">
-              <h3><a href="https://github.com/Okohedeki/airlock">airlock <span class="ext">↗</span></a></h3>
-              <span class="tagline">agent control plane</span>
+              <h3>OpenFleet</h3>
+              <span class="tagline">persistent agent computers</span>
             </div>
             <p class="desc">
-              Run any AI agent — LangGraph, smolagents, CrewAI, OpenAI Agents, Claude — as a
-              controlled, self-hosted HTTP service. <b>Today:</b> a Python worker packaged as a
-              <b>Docker image</b> owns the agent loop and serves an <b>OpenAI-compatible
-              <code>/v1/chat/completions</code></b> endpoint with SSE step-streaming, run-control
-              routes, a live <code>/console</code>, and <code>/metrics</code>. A TypeScript npm CLI
-              operates it. Proven by a containerized end-to-end test grid across six harnesses.
+              I want to code at night without leaving my own PC running. OpenFleet is a
+              mobile-first control plane for always-on agent machines I can reach from my phone.
             </p>
             <div class="stack">
-              <span class="chip status">most active</span>
-              <span class="chip">Python</span>
-              <span class="chip">TypeScript</span>
-              <span class="chip">Docker</span>
-              <span class="chip">SSE streaming</span>
-              <span class="chip">OpenAI-compatible API</span>
+              <span class="chip status">private · in progress</span>
             </div>
           </div>
         </article>
@@ -85,26 +75,15 @@
           <span class="num">02</span>
           <div class="body">
             <div class="title-row">
-              <h3><a href="https://github.com/Okohedeki/VaultOP">VaultOP <span class="ext">↗</span></a></h3>
-              <span class="tagline">local-first media studio</span>
+              <h3>Ocra</h3>
+              <span class="tagline">voice-driven agent orchestrator</span>
             </div>
             <p class="desc">
-              MIT-licensed media pipeline for creators where <b>nothing leaves the machine</b>.
-              <b>Today (v0.2.2):</b> drag-drop footage is content-hashed, <b>AES-256-GCM encrypted</b>
-              (key in the OS keychain), transcoded, and scene-split into a searchable library. One
-              click builds vertical teasers and cross-library compilations; a <b>mandatory human blur
-              gate</b> guards export. On-device AI runs locally — <b>Whisper</b> transcription,
-              <b>CLIP</b> tags, object-detection blur prefill — via transformers.js. Signed &amp;
-              notarized macOS + Windows builds; drivable headless via CLI and MCP.
+              Voice beats typing for steering an agent, and juggling a wall of ghostly terminals at
+              once is too straining. Ocra runs several Claude Code sessions and lets me just talk to them.
             </p>
             <div class="stack">
-              <span class="chip status">v0.2.2</span>
-              <span class="chip">Electron</span>
-              <span class="chip">React 19</span>
-              <span class="chip">TypeScript</span>
-              <span class="chip">SQLite</span>
-              <span class="chip">ffmpeg</span>
-              <span class="chip">transformers.js</span>
+              <span class="chip status">private</span>
             </div>
           </div>
         </article>
@@ -113,24 +92,16 @@
           <span class="num">03</span>
           <div class="body">
             <div class="title-row">
-              <h3><a href="https://github.com/Okohedeki/markov-engine">markov-engine <span class="ext">↗</span></a></h3>
+              <h3><a href="https://github.com/Okohedeki/markov-engine">markov <span class="ext">↗</span></a></h3>
               <span class="tagline">self-growing knowledge engine</span>
             </div>
             <p class="desc">
-              A storage-agnostic engine that turns saved links — articles, PDFs, YouTube/TikTok/Reddit,
-              audio — into living <b>Chains</b> of knowledge. <b>Today:</b> give it a URL and it
-              extracts &amp; transcribes content, pulls a summary plus entities/relationships with an
-              LLM, embeds it, and <b>clusters</b> it into the nearest Chain — then <b>grows</b> that
-              Chain by searching the web and <b>synthesizes</b> articles across its sources. All
-              persistence sits behind one <code>Store</code> interface (SQLite ships default); LLM and
-              embedding backends are pluggable and run with no keys.
+              I've always wanted a real self-learning loop. markov takes the links I save, clusters
+              them into living Chains of knowledge, and keeps growing them on its own — the open
+              engine behind it lives in <code>markov-engine</code>.
             </p>
             <div class="stack">
-              <span class="chip status">open-source engine</span>
-              <span class="chip">Python</span>
-              <span class="chip">LLM / RAG</span>
-              <span class="chip">embeddings</span>
-              <span class="chip">pgvector / SQLite</span>
+              <span class="chip status">open source</span>
             </div>
           </div>
         </article>
@@ -139,100 +110,18 @@
           <span class="num">04</span>
           <div class="body">
             <div class="title-row">
-              <h3><a href="https://github.com/Okohedeki/MathRL">Function War — RL <span class="ext">↗</span></a></h3>
-              <span class="tagline">reinforcement learning</span>
+              <h3><a href="https://github.com/Okohedeki/airlock">airlock <span class="ext">↗</span></a></h3>
+              <span class="tagline">self-hosted agent runtime</span>
             </div>
             <p class="desc">
-              An RL setup for a 2-player turn-based artillery game where each shot is a math curve
-              <code>y = f(x)</code>. <b>Today (V1):</b> a deterministic, tested headless game core
-              (19 tests), a single minimal <b>Gymnasium</b> env, a tiny continuous actor-critic, and a
-              compact <b>PPO</b> trainer over <b>PufferLib</b>'s vectorized envs — with eval win-rate
-              against scripted and random opponents. Deliberately stripped down: beat the baseline
-              first, add sophistication later.
+              I wanted to host my own local agents as real, controlled services. It works end-to-end —
+              but I've hit an inflection point and need to commit to a direction before taking it further.
             </p>
             <div class="stack">
-              <span class="chip status">V1 training</span>
-              <span class="chip">PyTorch</span>
-              <span class="chip">PPO</span>
-              <span class="chip">Gymnasium</span>
-              <span class="chip">PufferLib</span>
+              <span class="chip status">public · deciding direction</span>
             </div>
           </div>
         </article>
-      </div>
-    </section>
-
-    <!-- ===== Recent activity ===== -->
-    <section class="section" id="activity">
-      <div class="wrap">
-        <div class="section-head">
-          <h2><span class="idx">02</span> Recent activity</h2>
-          <span class="note">from recent commits across my repos</span>
-        </div>
-        <ul class="feed">
-        <!-- ACTIVITY:START -->
-        <li class="feed-item">
-          <time datetime="2026-06-24">Jun 24</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/markov-engine">markov-engine</a>
-          <span class="feed-text">Token-bucket rate limiting for outbound discovery</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-22">Jun 22</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/MathRL">MathRL</a>
-          <span class="feed-text">Add training graph: plot.py + metrics.csv logging in train.py</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-21">Jun 21</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/MathRL">MathRL</a>
-          <span class="feed-text">Add replay viewer: play.py + replay.html</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-21">Jun 21</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/VaultOP">VaultOP</a>
-          <span class="feed-text">Apply emotional-design plays — success moments, empty states, micro-interactions</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-21">Jun 21</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/MathRL">MathRL</a>
-          <span class="feed-text">V1 reset: archive over-engineered v0, add minimal PufferLib PPO pipeline</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-21">Jun 21</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/VaultOP">VaultOP</a>
-          <span class="feed-text">One sidebar destination per feature (Vault·Tag·Build·Cuts·Promos·Activity)</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-21">Jun 21</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/VaultOP">VaultOP</a>
-          <span class="feed-text">Polish the sidebar — line icons + collapsible rail</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-15">Jun 15</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/airlock">airlock</a>
-          <span class="feed-text">Real exposure flip (internal ↔ public)</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-15">Jun 15</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/airlock">airlock</a>
-          <span class="feed-text">Surface model identity, persistent skill on/off, drawer launch + Detect</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-15">Jun 15</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/airlock">airlock</a>
-          <span class="feed-text">No login wall — open straight to the dashboard</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-14">Jun 14</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/markov-engine">markov-engine</a>
-          <span class="feed-text">Cap avenue concurrency to avoid DDG throttling</span>
-        </li>
-        <li class="feed-item">
-          <time datetime="2026-06-14">Jun 14</time>
-          <a class="repo-chip" href="https://github.com/Okohedeki/markov-engine">markov-engine</a>
-          <span class="feed-text">Multi-avenue, platform-aware search + novelty/freshness</span>
-        </li>
-        <!-- ACTIVITY:END -->
-        </ul>
       </div>
     </section>
 
