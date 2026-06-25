@@ -4,7 +4,7 @@ My personal site — a minimal résumé + project page. Static HTML/CSS, zero bu
 dependencies (fonts load from Google Fonts). Writing lives on Substack, not here.
 
 - **`index.html`** — home: hero, *Projects* (each stated as *why* it exists), *Experience*, toolkit.
-- **`resume.html`** — full, print-ready résumé page (Cmd-P → Save as PDF). `Edeki-Okoh-Resume.docx` is the download.
+- **`Edeki-Okoh-Resume.docx`** — the résumé; every "Résumé" link points straight to this download.
 - **`learnings/index.html`** — staged curriculum page (currently: GPU / CUDA kernel development).
 - **`styles.css`** — the whole design (dark editorial: Fraunces + Hanken Grotesk + JetBrains Mono).
 
@@ -24,10 +24,9 @@ link. Edit the `<article class="project">` blocks directly to add, drop, or reor
 
 ## Résumé
 
-The "Résumé" links point to `resume.html` (a styled, print-ready page) and offer
-`Edeki-Okoh-Resume.docx` as a download. To update: edit `resume.html`, replace the
-`.docx`, and adjust the *Experience* summary in `index.html`. Prefer a real PDF? Drop one
-in and repoint the links.
+The "Résumé" links point straight to `Edeki-Okoh-Resume.docx`. To update: replace the
+`.docx` and adjust the *Experience* summary in `index.html`. Prefer a PDF? Drop one in and
+repoint the links.
 
 ## Deploy
 
