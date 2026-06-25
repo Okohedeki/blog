@@ -169,7 +169,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   padding: 1.9rem 0; border-top: 1px solid var(--line-soft); position: relative;
 }
 .project:first-child { border-top: 0; }
-.project .num { font-family: var(--mono); font-size: 0.85rem; color: var(--faint); padding-top: 0.35rem; }
+/* accent rail rides up in the gutter on hover — signals the active card
+   without shifting any layout */
+.project::after {
+  content: ""; position: absolute; left: -1.2rem; top: 1.9rem; bottom: 1.4rem;
+  width: 2px; border-radius: 2px; background: var(--accent);
+  opacity: 0; transform: scaleY(0.35); transform-origin: top;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+.project:hover::after { opacity: 1; transform: scaleY(1); }
+.project .num { font-family: var(--mono); font-size: 0.85rem; color: var(--faint); padding-top: 0.35rem; transition: color 0.22s ease; }
+.project:hover .num { color: var(--accent); }
 .project .body { min-width: 0; }
 .project .title-row { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
 .project h3 { font-family: var(--display); font-weight: 600; font-size: 1.7rem; letter-spacing: -0.01em; line-height: 1.1; }
