@@ -325,6 +325,43 @@ table.tbl td code { white-space: nowrap; }
 .stage-h { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
 .week { font-family: var(--mono); font-size: 0.72rem; color: var(--faint); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.55rem; }
 
+/* progress bar */
+.progress { display: flex; align-items: center; gap: 0.85rem; margin: 0.6rem 0 0.5rem; }
+.progress .track { flex: 1; height: 0.5rem; background: var(--surface-2); border: 1px solid var(--line-soft); border-radius: 999px; overflow: hidden; }
+.progress .fill { height: 100%; width: 0; background: var(--accent); border-radius: 999px; transition: width 0.5s ease; }
+.progress .pct { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+.progress-note { font-size: 0.85rem; color: var(--faint); margin: 0 0 1.6rem; }
+
+/* checklist */
+.stage { margin-bottom: 0.4rem; }
+.stage-prog { font-family: var(--mono); font-size: 0.74rem; color: var(--faint); font-weight: 400; }
+.checklist { list-style: none; padding: 0; margin: 0.3rem 0 1.4rem; }
+.checklist .task { padding: 0.42rem 0; border-top: 1px solid var(--line-soft); }
+.checklist .task:first-child { border-top: 0; }
+.checklist input.ck { position: absolute; opacity: 0; width: 0; height: 0; }
+.checklist label { display: flex; align-items: flex-start; gap: 0.7rem; cursor: default; }
+.checklist .box {
+  flex: 0 0 auto; width: 1.1rem; height: 1.1rem; margin-top: 0.12rem;
+  border: 1px solid var(--line); border-radius: 5px; background: var(--surface);
+  display: grid; place-items: center;
+}
+.checklist .box::after {
+  content: ""; width: 0.5rem; height: 0.28rem; margin-top: -0.1rem;
+  border-left: 2px solid #161208; border-bottom: 2px solid #161208;
+  transform: rotate(-45deg); opacity: 0;
+}
+.checklist input.ck:checked + label .box { background: var(--accent); border-color: var(--accent); }
+.checklist input.ck:checked + label .box::after { opacity: 1; }
+.checklist .txt { display: flex; flex-direction: column; }
+.checklist .t { color: var(--ink); font-size: 0.95rem; }
+.checklist input.ck:checked + label .t { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--faint); }
+.checklist .ann { color: var(--faint); font-size: 0.78rem; font-family: var(--mono); margin-top: 0.12rem; }
+.checklist .badge {
+  font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 4px; padding: 0.02rem 0.32rem; margin-left: 0.5rem; vertical-align: 1px;
+}
+
 /* skill tree */
 .tree { list-style: none; padding: 0; margin: 0.6rem 0 1.4rem; counter-reset: lvl; }
 .tree > li {

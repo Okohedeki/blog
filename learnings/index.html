@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Learnings — Kernel Development — Edeki Okoh</title>
-  <meta name="description" content="A practical, staged curriculum for GPU / CUDA kernel development — CUDA fundamentals → memory & performance → PyTorch integration → Triton → profiling → AI kernels → a portfolio capstone, with LeetCode running alongside.">
+  <meta name="description" content="A practical, staged checklist for GPU / CUDA kernel development — CUDA fundamentals → memory & performance → PyTorch integration → Triton → profiling → AI kernels → a portfolio capstone, with LeetCode alongside. Tracked as progress.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -27,24 +27,22 @@
   <main class="wrap">
     <div class="page-title">
       <h1>Kernel development</h1>
-      <p class="lead">A practical, staged path for learning GPU / CUDA kernel development — built as a
-      curriculum with deliverables, not a link dump. The spine: CUDA fundamentals → memory &amp;
-      performance → PyTorch integration → Triton → profiling → AI kernels → a portfolio capstone.
-      LeetCode runs alongside so interview fluency builds without hijacking the plan.</p>
+      <p class="lead">Me teaching myself GPU / CUDA kernel work, tracked as a checklist so the progress is
+      honest. The spine: CUDA fundamentals → memory &amp; performance → PyTorch integration → Triton →
+      profiling → AI kernels → a portfolio capstone. LeetCode runs alongside.</p>
     </div>
 
     <div class="lrn">
 
       <div class="callout">
-        <span class="tag">Working principle</span>
-        GPU Mode is not a linear course — it's a resource graph (CUDA, Triton, <code>torch.compile</code>,
-        papers, books, lectures, profilers, PyTorch internals, hardware docs). So I keep <strong>one
-        spine</strong> and pull GPU Mode links in only when they support the project I'm on. The win is
-        artifacts, not a collection of bookmarks.
+        <span class="tag">How I'm treating this</span>
+        GPU Mode isn't a linear course — it's a resource graph (CUDA, Triton, <code>torch.compile</code>,
+        papers, books, lectures, profilers). So I keep <strong>one spine</strong> and pull links in only
+        when they support the thing I'm building. The win is artifacts, not bookmarks.
       </div>
 
       <h2><span class="n">A.</span> Learning lanes</h2>
-      <p>Six lanes run in parallel. Each lane has something to study and something to build.</p>
+      <p>Six lanes run in parallel — each has something to study and something to build.</p>
       <div class="tbl-wrap">
         <table class="tbl">
           <thead><tr><th>Lane</th><th>Purpose</th><th>Study</th><th>Build</th></tr></thead>
@@ -60,7 +58,7 @@
       </div>
 
       <h2><span class="n">B.</span> The skill tree</h2>
-      <p>Eight levels, bottom-up. Don't jump ahead — each level is the foundation for the next.</p>
+      <p>Eight levels, bottom-up. Each one is the foundation for the next.</p>
       <ol class="tree">
         <li>CUDA syntax &amp; execution model <span>vector add, memory copy, indexing</span></li>
         <li>Parallel patterns <span>reduce, scan, histogram, atomics</span></li>
@@ -72,147 +70,127 @@
         <li>Portfolio <span>Tiny Transformer Kernel Lab or GPU Order-Book Simulator</span></li>
       </ol>
 
-      <h2><span class="n">C.</span> The staged path</h2>
-      <p>Roughly a 16-week plan in two-week stages. Each stage pairs GPU work with a matching LeetCode
-      pattern and ends in one concrete artifact.</p>
-
-      <h3 class="stage-h">Stage 0 — Setup <span class="week">week 0</span></h3>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>Task</th><th>Output</th></tr></thead>
-          <tbody>
-            <tr><td>Linux-first dev env (WSL2 or native)</td><td><code>nvidia-smi</code>, <code>nvcc --version</code>, torch CUDA check</td></tr>
-            <tr><td>Create <code>gpu-learning-lab</code> repo</td><td>folder structure (Section G)</td></tr>
-            <tr><td>Install PyTorch from the official selector</td><td><code>torch.cuda.is_available()</code> true</td></tr>
-            <tr><td>Install Nsight Systems + Nsight Compute</td><td>first trace captured</td></tr>
-            <tr><td>Baseline LeetCode</td><td>5 easy problems, timed</td></tr>
-          </tbody>
-        </table>
+      <!-- ============================================================
+           Progress checklist. To mark a task done, add `checked` to its
+           <input> (e.g. <input ... class="ck" checked>) and commit.
+           The bars below recompute automatically. Read-only by design so
+           the live page reflects committed progress.
+           ============================================================ -->
+      <h2><span class="n">C.</span> The path <span id="ov-pct" class="stage-prog"></span></h2>
+      <p>Roughly 16 weeks in two-week stages. Each task pairs GPU work with a matching LeetCode pattern;
+      each stage ends in one artifact. I tick these off as I go.</p>
+      <div class="progress">
+        <div class="track"><div class="fill" id="ov-fill"></div></div>
+        <span class="pct" id="ov-pct2"></span>
       </div>
-      <p>Use the official PyTorch install selector as the source of truth. Don't blindly pin old
-      <code>cu128</code> wheels — CUDA 12.8 binaries were dropped in favor of 13.0, while 12.6 stays
-      available for older drivers.</p>
+      <p class="progress-note">Checked = done. I update this as I work through it.</p>
 
-      <h3 class="stage-h">Stage 1 — CUDA foundations <span class="week">weeks 1–2</span></h3>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>GPU learning</th><th>Build</th><th>LeetCode</th></tr></thead>
-          <tbody>
-            <tr><td>Thread/block/grid indexing</td><td>vector add</td><td>arrays basics</td></tr>
-            <tr><td>Host ↔ device memory copy</td><td>saxpy</td><td>prefix sums</td></tr>
-            <tr><td>Warps &amp; divergence</td><td>branch-heavy kernel</td><td>two pointers</td></tr>
-            <tr><td>Shared memory basics</td><td>tiled image blur</td><td>sliding window</td></tr>
-            <tr><td>Benchmarking correctly</td><td>timing harness</td><td>hash maps</td></tr>
-          </tbody>
-        </table>
+      <div class="stage" data-stage>
+        <h3 class="stage-h">Stage 0 — Setup <span class="week">week 0</span> <span class="stage-prog" data-prog></span></h3>
+        <ul class="checklist">
+          <li class="task"><input type="checkbox" id="s0-1" class="ck" disabled><label for="s0-1"><span class="box"></span><span class="txt"><span class="t">Linux-first dev environment (WSL2 or native)</span><span class="ann">nvidia-smi · nvcc --version · torch CUDA check</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s0-2" class="ck" disabled><label for="s0-2"><span class="box"></span><span class="txt"><span class="t">Create the <code>gpu-learning-lab</code> repo</span><span class="ann">folder structure from Section G</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s0-3" class="ck" disabled><label for="s0-3"><span class="box"></span><span class="txt"><span class="t">Install PyTorch from the official selector</span><span class="ann">torch.cuda.is_available() == True</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s0-4" class="ck" disabled><label for="s0-4"><span class="box"></span><span class="txt"><span class="t">Install Nsight Systems + Nsight Compute</span><span class="ann">capture a first trace</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s0-5" class="ck" disabled><label for="s0-5"><span class="box"></span><span class="txt"><span class="t">Baseline LeetCode</span><span class="ann">5 easy problems, timed</span></span></label></li>
+        </ul>
       </div>
-      <div class="callout deliver"><span class="tag">Deliverable</span> A one-pager explaining blocks, warps, SMs, the memory hierarchy, and launch overhead.</div>
 
-      <h3 class="stage-h">Stage 2 — Parallel patterns <span class="week">weeks 3–4</span></h3>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>GPU learning</th><th>Build</th><th>LeetCode</th></tr></thead>
-          <tbody>
-            <tr><td>Reduction</td><td>sum/max reduction kernel</td><td>monotonic stack</td></tr>
-            <tr><td>Scan / prefix sum</td><td>inclusive/exclusive scan</td><td>prefix-sum problems</td></tr>
-            <tr><td>Histogram / atomics</td><td>histogram kernel</td><td>hash counting</td></tr>
-            <tr><td>Memory coalescing</td><td>coalesced vs non-coalesced benchmark</td><td>intervals</td></tr>
-            <tr><td>Occupancy intuition</td><td>block-size experiments</td><td>binary search</td></tr>
-          </tbody>
-        </table>
+      <div class="stage" data-stage>
+        <h3 class="stage-h">Stage 1 — CUDA foundations <span class="week">weeks 1–2</span> <span class="stage-prog" data-prog></span></h3>
+        <ul class="checklist">
+          <li class="task"><input type="checkbox" id="s1-1" class="ck" disabled><label for="s1-1"><span class="box"></span><span class="txt"><span class="t">Vector add</span><span class="ann">thread/block/grid indexing · LC: arrays</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s1-2" class="ck" disabled><label for="s1-2"><span class="box"></span><span class="txt"><span class="t">saxpy</span><span class="ann">host ↔ device memory copy · LC: prefix sums</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s1-3" class="ck" disabled><label for="s1-3"><span class="box"></span><span class="txt"><span class="t">Branch-heavy kernel</span><span class="ann">warps &amp; divergence · LC: two pointers</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s1-4" class="ck" disabled><label for="s1-4"><span class="box"></span><span class="txt"><span class="t">Tiled image blur</span><span class="ann">shared memory basics · LC: sliding window</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s1-5" class="ck" disabled><label for="s1-5"><span class="box"></span><span class="txt"><span class="t">Timing harness</span><span class="ann">benchmarking correctly · LC: hash maps</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s1-6" class="ck" disabled><label for="s1-6"><span class="box"></span><span class="txt"><span class="t">One-pager: blocks, warps, SMs, memory hierarchy, launch overhead <span class="badge">artifact</span></span></span></label></li>
+        </ul>
       </div>
-      <div class="callout deliver"><span class="tag">Deliverable</span> Benchmark report: naive vs optimized reduction/scan.</div>
 
-      <h3 class="stage-h">Stage 3 — Matmul progression <span class="week">weeks 5–6</span></h3>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>GPU learning</th><th>Build</th><th>LeetCode</th></tr></thead>
-          <tbody>
-            <tr><td>Naive matmul</td><td><code>C = A @ B</code></td><td>matrix problems</td></tr>
-            <tr><td>Coalesced loads</td><td>faster matmul</td><td>2D grid traversal</td></tr>
-            <tr><td>Shared-memory tiling</td><td>tiled matmul</td><td>divide &amp; conquer</td></tr>
-            <tr><td>Register tiling</td><td>improved matmul</td><td>heap basics</td></tr>
-            <tr><td>Compare to cuBLAS</td><td>benchmark table</td><td>top-k</td></tr>
-          </tbody>
-        </table>
+      <div class="stage" data-stage>
+        <h3 class="stage-h">Stage 2 — Parallel patterns <span class="week">weeks 3–4</span> <span class="stage-prog" data-prog></span></h3>
+        <ul class="checklist">
+          <li class="task"><input type="checkbox" id="s2-1" class="ck" disabled><label for="s2-1"><span class="box"></span><span class="txt"><span class="t">Reduction kernel (sum/max)</span><span class="ann">reduction · LC: monotonic stack</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s2-2" class="ck" disabled><label for="s2-2"><span class="box"></span><span class="txt"><span class="t">Inclusive/exclusive scan</span><span class="ann">prefix sum · LC: prefix-sum problems</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s2-3" class="ck" disabled><label for="s2-3"><span class="box"></span><span class="txt"><span class="t">Histogram kernel</span><span class="ann">atomics · LC: hash counting</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s2-4" class="ck" disabled><label for="s2-4"><span class="box"></span><span class="txt"><span class="t">Coalesced vs non-coalesced benchmark</span><span class="ann">memory coalescing · LC: intervals</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s2-5" class="ck" disabled><label for="s2-5"><span class="box"></span><span class="txt"><span class="t">Block-size experiments</span><span class="ann">occupancy intuition · LC: binary search</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s2-6" class="ck" disabled><label for="s2-6"><span class="box"></span><span class="txt"><span class="t">Benchmark report: naive vs optimized reduction/scan <span class="badge">artifact</span></span></span></label></li>
+        </ul>
       </div>
-      <div class="callout deliver"><span class="tag">Deliverable</span> "How my matmul got faster" writeup — the first serious portfolio piece. Matmul is the Rosetta Stone of GPU performance; don't skip it.</div>
 
-      <h3 class="stage-h">Stage 4 — PyTorch performance <span class="week">weeks 7–8</span></h3>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>Learning</th><th>Build</th><th>LeetCode</th></tr></thead>
-          <tbody>
-            <tr><td>PyTorch profiler</td><td>profile a tiny transformer block</td><td>trees</td></tr>
-            <tr><td>GPU memory snapshots</td><td>find allocation spikes</td><td>recursion</td></tr>
-            <tr><td><code>torch.compile</code></td><td>compile a block &amp; measure</td><td>graphs intro</td></tr>
-            <tr><td>Graph breaks</td><td>create/fix graph-break examples</td><td>BFS/DFS</td></tr>
-            <tr><td>Data movement</td><td>CPU/GPU transfer benchmark</td><td>shortest path</td></tr>
-          </tbody>
-        </table>
+      <div class="stage" data-stage>
+        <h3 class="stage-h">Stage 3 — Matmul progression <span class="week">weeks 5–6</span> <span class="stage-prog" data-prog></span></h3>
+        <ul class="checklist">
+          <li class="task"><input type="checkbox" id="s3-1" class="ck" disabled><label for="s3-1"><span class="box"></span><span class="txt"><span class="t">Naive matmul <code>C = A @ B</code></span><span class="ann">LC: matrix problems</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s3-2" class="ck" disabled><label for="s3-2"><span class="box"></span><span class="txt"><span class="t">Coalesced matmul</span><span class="ann">coalesced loads · LC: 2D grid traversal</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s3-3" class="ck" disabled><label for="s3-3"><span class="box"></span><span class="txt"><span class="t">Tiled (shared-memory) matmul</span><span class="ann">LC: divide &amp; conquer</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s3-4" class="ck" disabled><label for="s3-4"><span class="box"></span><span class="txt"><span class="t">Register-tiled matmul</span><span class="ann">LC: heap basics</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s3-5" class="ck" disabled><label for="s3-5"><span class="box"></span><span class="txt"><span class="t">Benchmark vs cuBLAS</span><span class="ann">LC: top-k</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s3-6" class="ck" disabled><label for="s3-6"><span class="box"></span><span class="txt"><span class="t">"How my matmul got faster" writeup — first serious portfolio piece <span class="badge">artifact</span></span></span></label></li>
+        </ul>
       </div>
-      <div class="callout deliver"><span class="tag">Deliverable</span> A profiling report with before/after latency + memory and a bottleneck explanation. This is closer to ML-systems work than pure CUDA.</div>
 
-      <h3 class="stage-h">Stage 5 — Custom PyTorch CUDA ops <span class="week">weeks 9–10</span></h3>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>Learning</th><th>Build</th><th>LeetCode</th></tr></thead>
-          <tbody>
-            <tr><td>C++ extension basics</td><td>CPU custom op</td><td>linked list</td></tr>
-            <tr><td>CUDA extension</td><td><code>mymuladd</code> CUDA op</td><td>simple API design</td></tr>
-            <tr><td>Autograd path</td><td>custom backward / wrapper</td><td>DP intro</td></tr>
-            <tr><td>Testing</td><td>correctness + tolerance tests</td><td>DP 1D</td></tr>
-            <tr><td>Packaging</td><td>installable local wheel</td><td>DP 2D</td></tr>
-          </tbody>
-        </table>
+      <div class="stage" data-stage>
+        <h3 class="stage-h">Stage 4 — PyTorch performance <span class="week">weeks 7–8</span> <span class="stage-prog" data-prog></span></h3>
+        <ul class="checklist">
+          <li class="task"><input type="checkbox" id="s4-1" class="ck" disabled><label for="s4-1"><span class="box"></span><span class="txt"><span class="t">Profile a tiny transformer block</span><span class="ann">PyTorch profiler · LC: trees</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s4-2" class="ck" disabled><label for="s4-2"><span class="box"></span><span class="txt"><span class="t">Find allocation spikes</span><span class="ann">GPU memory snapshots · LC: recursion</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s4-3" class="ck" disabled><label for="s4-3"><span class="box"></span><span class="txt"><span class="t">Compile a block &amp; measure</span><span class="ann">torch.compile · LC: graphs intro</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s4-4" class="ck" disabled><label for="s4-4"><span class="box"></span><span class="txt"><span class="t">Create/fix graph-break examples</span><span class="ann">LC: BFS/DFS</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s4-5" class="ck" disabled><label for="s4-5"><span class="box"></span><span class="txt"><span class="t">CPU/GPU transfer benchmark</span><span class="ann">data movement · LC: shortest path</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s4-6" class="ck" disabled><label for="s4-6"><span class="box"></span><span class="txt"><span class="t">Profiling report: before/after latency + memory + bottleneck <span class="badge">artifact</span></span></span></label></li>
+        </ul>
       </div>
-      <div class="callout deliver"><span class="tag">Deliverable</span> One custom CUDA op integrated into PyTorch — high-signal proof you can cross the Python ↔ systems boundary.</div>
 
-      <h3 class="stage-h">Stage 6 — Triton <span class="week">weeks 11–12</span></h3>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>Learning</th><th>Build</th><th>LeetCode</th></tr></thead>
-          <tbody>
-            <tr><td>Triton model</td><td>vector add</td><td>arrays review</td></tr>
-            <tr><td>Program IDs / blocks</td><td>softmax</td><td>sliding window review</td></tr>
-            <tr><td>Masking</td><td>variable-size softmax</td><td>binary search review</td></tr>
-            <tr><td>Matmul</td><td>Triton matmul</td><td>graph review</td></tr>
-            <tr><td>LayerNorm</td><td>Triton layernorm</td><td>DP review</td></tr>
-          </tbody>
-        </table>
+      <div class="stage" data-stage>
+        <h3 class="stage-h">Stage 5 — Custom PyTorch CUDA ops <span class="week">weeks 9–10</span> <span class="stage-prog" data-prog></span></h3>
+        <ul class="checklist">
+          <li class="task"><input type="checkbox" id="s5-1" class="ck" disabled><label for="s5-1"><span class="box"></span><span class="txt"><span class="t">CPU custom op (C++ extension)</span><span class="ann">LC: linked list</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s5-2" class="ck" disabled><label for="s5-2"><span class="box"></span><span class="txt"><span class="t"><code>mymuladd</code> CUDA op (CUDA extension)</span><span class="ann">LC: simple API design</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s5-3" class="ck" disabled><label for="s5-3"><span class="box"></span><span class="txt"><span class="t">Custom backward / autograd wrapper</span><span class="ann">LC: DP intro</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s5-4" class="ck" disabled><label for="s5-4"><span class="box"></span><span class="txt"><span class="t">Correctness + tolerance tests</span><span class="ann">LC: DP 1D</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s5-5" class="ck" disabled><label for="s5-5"><span class="box"></span><span class="txt"><span class="t">Installable local wheel</span><span class="ann">packaging · LC: DP 2D</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s5-6" class="ck" disabled><label for="s5-6"><span class="box"></span><span class="txt"><span class="t">One custom CUDA op integrated into PyTorch <span class="badge">artifact</span></span></span></label></li>
+        </ul>
       </div>
-      <div class="callout deliver"><span class="tag">Deliverable</span> A CUDA-vs-Triton comparison for softmax or layernorm. The point isn't "Triton is easier" — it's explaining the tradeoff: Triton authors ML-shaped kernels faster; CUDA/CUTLASS give lower-level control when you need to squeeze the hardware.</div>
 
-      <h3 class="stage-h">Stage 7 — AI kernel case studies <span class="week">weeks 13–14</span></h3>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>Learning</th><th>Build</th><th>LeetCode</th></tr></thead>
-          <tbody>
-            <tr><td>FlashAttention intuition</td><td>naive attention benchmark</td><td>matrix + prefix review</td></tr>
-            <tr><td>Online softmax</td><td>stable-softmax notes</td><td>numerical edge cases</td></tr>
-            <tr><td>KV cache</td><td>inference memory benchmark</td><td>LRU / cache</td></tr>
-            <tr><td>Quantization</td><td>int8 / nf4 notes</td><td>bit manipulation</td></tr>
-            <tr><td>Mamba / scan link</td><td>selective-scan notes</td><td>prefix / scan</td></tr>
-          </tbody>
-        </table>
+      <div class="stage" data-stage>
+        <h3 class="stage-h">Stage 6 — Triton <span class="week">weeks 11–12</span> <span class="stage-prog" data-prog></span></h3>
+        <ul class="checklist">
+          <li class="task"><input type="checkbox" id="s6-1" class="ck" disabled><label for="s6-1"><span class="box"></span><span class="txt"><span class="t">Triton vector add</span><span class="ann">the Triton model · LC: arrays review</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s6-2" class="ck" disabled><label for="s6-2"><span class="box"></span><span class="txt"><span class="t">Triton softmax</span><span class="ann">program IDs / blocks · LC: sliding window review</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s6-3" class="ck" disabled><label for="s6-3"><span class="box"></span><span class="txt"><span class="t">Variable-size softmax</span><span class="ann">masking · LC: binary search review</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s6-4" class="ck" disabled><label for="s6-4"><span class="box"></span><span class="txt"><span class="t">Triton matmul</span><span class="ann">LC: graph review</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s6-5" class="ck" disabled><label for="s6-5"><span class="box"></span><span class="txt"><span class="t">Triton layernorm</span><span class="ann">LC: DP review</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s6-6" class="ck" disabled><label for="s6-6"><span class="box"></span><span class="txt"><span class="t">CUDA-vs-Triton comparison for softmax or layernorm <span class="badge">artifact</span></span></span></label></li>
+        </ul>
       </div>
-      <div class="callout deliver"><span class="tag">Deliverable</span> A "why attention is memory-bound" one-pager plus a small benchmark.</div>
 
-      <h3 class="stage-h">Stage 8 — Capstone <span class="week">weeks 15–16</span></h3>
-      <p>Pick one. My order: <strong>Tiny Transformer Kernel Lab</strong> first (most legible for AI-infra
-      roles — softmax, layernorm, matmul, attention, KV-cache profiling, <code>torch.compile</code>,
-      Triton, custom CUDA ops), then the <strong>GPU-Accelerated Order-Book Simulator</strong> as the
-      "I can apply GPU systems outside ML too" piece.</p>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead><tr><th>Capstone</th><th>Why it fits</th></tr></thead>
-          <tbody>
-            <tr><td>Tiny Transformer Kernel Lab</td><td>best fit for AI-infra roles</td></tr>
-            <tr><td>GPU Order-Book Simulator</td><td>strong systems + CUDA signal</td></tr>
-            <tr><td>PyTorch Profiling Clinic</td><td>practical MLOps/platform signal</td></tr>
-            <tr><td>Triton Kernel Zoo for Tiny LLMs</td><td>inference/platform portfolio</td></tr>
-          </tbody>
-        </table>
+      <div class="stage" data-stage>
+        <h3 class="stage-h">Stage 7 — AI kernel case studies <span class="week">weeks 13–14</span> <span class="stage-prog" data-prog></span></h3>
+        <ul class="checklist">
+          <li class="task"><input type="checkbox" id="s7-1" class="ck" disabled><label for="s7-1"><span class="box"></span><span class="txt"><span class="t">Naive attention benchmark</span><span class="ann">FlashAttention intuition · LC: matrix + prefix review</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s7-2" class="ck" disabled><label for="s7-2"><span class="box"></span><span class="txt"><span class="t">Stable / online softmax notes</span><span class="ann">LC: numerical edge cases</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s7-3" class="ck" disabled><label for="s7-3"><span class="box"></span><span class="txt"><span class="t">Inference memory benchmark (KV cache)</span><span class="ann">LC: LRU / cache</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s7-4" class="ck" disabled><label for="s7-4"><span class="box"></span><span class="txt"><span class="t">int8 / nf4 quantization notes</span><span class="ann">LC: bit manipulation</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s7-5" class="ck" disabled><label for="s7-5"><span class="box"></span><span class="txt"><span class="t">Selective-scan notes (Mamba link)</span><span class="ann">LC: prefix / scan</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s7-6" class="ck" disabled><label for="s7-6"><span class="box"></span><span class="txt"><span class="t">"Why attention is memory-bound" one-pager + benchmark <span class="badge">artifact</span></span></span></label></li>
+        </ul>
+      </div>
+
+      <div class="stage" data-stage>
+        <h3 class="stage-h">Stage 8 — Capstone <span class="week">weeks 15–16</span> <span class="stage-prog" data-prog></span></h3>
+        <p>Pick one — my order is <strong>Tiny Transformer Kernel Lab</strong> first (most legible for
+        AI-infra roles: softmax, layernorm, matmul, attention, KV-cache profiling, <code>torch.compile</code>,
+        Triton, custom CUDA ops), then the <strong>GPU Order-Book Simulator</strong> as the "I can apply
+        this outside ML too" piece. Other options: PyTorch Profiling Clinic, Triton Kernel Zoo for tiny LLMs.</p>
+        <ul class="checklist">
+          <li class="task"><input type="checkbox" id="s8-1" class="ck" disabled><label for="s8-1"><span class="box"></span><span class="txt"><span class="t">Pick a capstone and scope it</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s8-2" class="ck" disabled><label for="s8-2"><span class="box"></span><span class="txt"><span class="t">Build it</span></span></label></li>
+          <li class="task"><input type="checkbox" id="s8-3" class="ck" disabled><label for="s8-3"><span class="box"></span><span class="txt"><span class="t">Publish benchmarks + writeup <span class="badge">artifact</span></span></span></label></li>
+        </ul>
       </div>
 
       <h2><span class="n">D.</span> Weekly cadence</h2>
@@ -229,11 +207,11 @@
           </tbody>
         </table>
       </div>
-      <p>LeetCode volume is <strong>3–5 problems/week</strong>, not 20. The goal is interview-safe while
-      building rare GPU/AI-systems skills — not competitive programming.</p>
+      <p>LeetCode volume is <strong>3–5 problems/week</strong>, not 20 — interview-safe, not competitive
+      programming.</p>
 
       <h2><span class="n">E.</span> LeetCode ↔ GPU mapping</h2>
-      <p>The point of pairing: LeetCode reinforces the same computational patterns the GPU work uses.</p>
+      <p>LeetCode reinforces the same computational patterns the GPU work uses.</p>
       <div class="tbl-wrap">
         <table class="tbl">
           <thead><tr><th>GPU topic</th><th>LeetCode pattern</th></tr></thead>
@@ -279,18 +257,8 @@
   07_capstone/          gpu_order_book_simulator | tiny_transformer_kernel_lab
   leetcode/             arrays_hashing · two_pointers · sliding_window · trees_graphs · dp
   notes/                one_pagers · interview_answers · profiling_reports</pre>
-      <p>Every project produces one artifact: a benchmark table, a profiling screenshot, a one-page
-      explanation, or a clean implementation.</p>
 
-      <h2><span class="n">H.</span> First 30 days</h2>
-      <ul>
-        <li><strong>Week 1</strong> — intro CUDA material; build vector add + saxpy; write a timing harness; LeetCode: arrays + hash maps (5).</li>
-        <li><strong>Week 2</strong> — thread/block/grid + memory hierarchy; build image blur / simple stencil; benchmark block sizes; LeetCode: two pointers + sliding window (5).</li>
-        <li><strong>Week 3</strong> — build reduction; compare global-memory vs shared-memory; profile with Nsight Compute; LeetCode: prefix sums + stack (4).</li>
-        <li><strong>Week 4</strong> — build scan/prefix sum; read GPU Gems scan / CUB conceptually; one-pager on scan &amp; why it matters for state-space models; LeetCode: binary search + intervals (4).</li>
-      </ul>
-
-      <h2><span class="n">I.</span> Reference shelf</h2>
+      <h2><span class="n">H.</span> Reference shelf</h2>
       <p>Pulled in when a project needs them — <strong>PMPP is the spine</strong>, the rest are applied
       commentary or reference.</p>
       <div class="tbl-wrap">
@@ -323,5 +291,27 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Recompute overall + per-stage progress from the checklist state in the HTML.
+    (function () {
+      var all = document.querySelectorAll('.checklist input.ck');
+      var done = 0;
+      all.forEach(function (b) { if (b.checked) done++; });
+      var total = all.length;
+      var pct = total ? Math.round((done / total) * 100) : 0;
+      var fill = document.getElementById('ov-fill');
+      if (fill) fill.style.width = pct + '%';
+      var label = done + ' / ' + total + ' · ' + pct + '%';
+      var p2 = document.getElementById('ov-pct2'); if (p2) p2.textContent = label;
+      var pOv = document.getElementById('ov-pct'); if (pOv) pOv.textContent = pct + '%';
+      document.querySelectorAll('[data-stage]').forEach(function (st) {
+        var boxes = st.querySelectorAll('input.ck');
+        var d = 0; boxes.forEach(function (b) { if (b.checked) d++; });
+        var el = st.querySelector('[data-prog]');
+        if (el) el.textContent = d + '/' + boxes.length;
+      });
+    })();
+  </script>
 </body>
 </html>
