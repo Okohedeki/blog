@@ -46,18 +46,6 @@ body {
   overflow-x: hidden;
 }
 
-/* atmospheric glow + grain */
-body::before {
-  content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
-  background:
-    radial-gradient(60rem 40rem at 78% -8%, var(--glow), transparent 60%),
-    radial-gradient(50rem 36rem at -6% 8%, rgba(140,120,90,0.10), transparent 55%);
-}
-body::after {
-  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.6rem; }
 
 /* ---- selection / focus ---- */
@@ -107,11 +95,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .hero h1 {
   font-family: var(--display);
   font-weight: 500;
-  font-size: clamp(2.8rem, 8vw, 5.2rem);
-  line-height: 0.98; letter-spacing: -0.02em;
-  font-optical-sizing: auto;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  line-height: 1.04; letter-spacing: -0.02em;
 }
-.hero h1 em { font-style: italic; color: var(--accent); }
 .hero .lede {
   margin-top: 1.6rem; max-width: 40rem;
   font-size: clamp(1.05rem, 2.2vw, 1.28rem); color: var(--muted); line-height: 1.55;
@@ -124,14 +110,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   margin-top: 2rem; padding: 0.4rem 0.85rem;
   border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
 }
-.status .pulse {
-  width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--accent);
-  box-shadow: 0 0 0 0 var(--glow); animation: pulse 2.4s infinite;
-}
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
-  70% { box-shadow: 0 0 0 0.5rem transparent; }
-  100% { box-shadow: 0 0 0 0 transparent; }
+.status .dot {
+  width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--accent); flex: 0 0 auto;
 }
 
 .actions { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; }
@@ -300,6 +280,68 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .back:hover { color: var(--accent); }
 
 /* ============================================================
+   Learnings / curriculum
+   ============================================================ */
+.lrn { max-width: 52rem; margin: 0 auto; padding-bottom: 2rem; }
+.lrn .lead { color: var(--muted); font-size: 1.05rem; max-width: 42rem; }
+.lrn h2 {
+  font-family: var(--display); font-weight: 600; font-size: 1.5rem; letter-spacing: -0.01em;
+  margin: 2.6rem 0 0.4rem; padding-top: 1.6rem; border-top: 1px solid var(--line-soft);
+}
+.lrn h2 .n { font-family: var(--mono); font-size: 0.9rem; color: var(--accent); margin-right: 0.5rem; }
+.lrn h3 { font-size: 1.05rem; font-weight: 600; margin: 1.6rem 0 0.5rem; }
+.lrn p { color: var(--muted); margin-bottom: 1rem; }
+.lrn p strong, .lrn li strong { color: var(--ink); font-weight: 600; }
+.lrn ul, .lrn ol { color: var(--muted); padding-left: 1.2rem; margin-bottom: 1rem; }
+.lrn ul { list-style: disc; }
+.lrn ol { list-style: decimal; }
+.lrn li { margin-bottom: 0.35rem; }
+.lrn code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-2); padding: 0.1rem 0.38rem; border-radius: 4px; color: var(--ink); }
+.lrn pre {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 1.1rem 1.25rem; overflow-x: auto; margin: 0.6rem 0 1.4rem;
+  font-family: var(--mono); font-size: 0.82rem; line-height: 1.5; color: var(--muted);
+}
+
+/* tables */
+.tbl-wrap { overflow-x: auto; margin: 0.8rem 0 1.4rem; border: 1px solid var(--line-soft); border-radius: 10px; }
+table.tbl { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 34rem; }
+table.tbl th, table.tbl td { text-align: left; padding: 0.6rem 0.85rem; vertical-align: top; border-top: 1px solid var(--line-soft); }
+table.tbl thead th { border-top: 0; font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 500; }
+table.tbl tbody tr:nth-child(even) { background: var(--surface); }
+table.tbl td { color: var(--muted); }
+table.tbl td:first-child { color: var(--ink); white-space: nowrap; }
+table.tbl td code { white-space: nowrap; }
+
+/* principle / deliverable callouts */
+.callout {
+  border: 1px solid var(--line); border-left: 2px solid var(--accent); border-radius: 8px;
+  background: var(--surface); padding: 0.9rem 1.1rem; margin: 1rem 0 1.4rem; color: var(--muted);
+}
+.callout.deliver { border-left-color: var(--accent); font-size: 0.92rem; }
+.callout .tag { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); display: block; margin-bottom: 0.25rem; }
+
+/* stage header with week badge */
+.stage-h { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
+.week { font-family: var(--mono); font-size: 0.72rem; color: var(--faint); border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.55rem; }
+
+/* skill tree */
+.tree { list-style: none; padding: 0; margin: 0.6rem 0 1.4rem; counter-reset: lvl; }
+.tree > li {
+  list-style: none; padding: 0.7rem 0 0.7rem 3.2rem; position: relative;
+  border-top: 1px solid var(--line-soft); color: var(--ink); font-weight: 600;
+}
+.tree > li:first-child { border-top: 0; }
+.tree > li::before {
+  counter-increment: lvl; content: "L" counter(lvl);
+  position: absolute; left: 0; top: 0.7rem;
+  font-family: var(--mono); font-size: 0.74rem; color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); border-radius: 5px;
+  padding: 0.1rem 0.4rem;
+}
+.tree > li span { display: block; font-weight: 400; color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+
+/* ============================================================
    Footer
    ============================================================ */
 footer { border-top: 1px solid var(--line-soft); margin-top: 2rem; padding: 3rem 0 4rem; }
@@ -309,13 +351,3 @@ footer .links { display: flex; gap: 1.3rem; }
 footer .links a { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
 footer .links a:hover { color: var(--accent); }
 
-/* ============================================================
-   Load animation
-   ============================================================ */
-@media (prefers-reduced-motion: no-preference) {
-  .reveal { opacity: 0; transform: translateY(14px); animation: rise 0.7s cubic-bezier(0.2,0.7,0.2,1) forwards; }
-  .reveal:nth-child(1) { animation-delay: 0.02s; }
-  .d1 { animation-delay: 0.08s; } .d2 { animation-delay: 0.16s; }
-  .d3 { animation-delay: 0.24s; } .d4 { animation-delay: 0.32s; } .d5 { animation-delay: 0.40s; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
-}

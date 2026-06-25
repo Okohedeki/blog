@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learnings — Kernel Development — Edeki Okoh</title>
+  <meta name="description" content="A practical, staged curriculum for GPU / CUDA kernel development — CUDA fundamentals → memory & performance → PyTorch integration → Triton → profiling → AI kernels → a portfolio capstone, with LeetCode running alongside.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><span class="mark">EO</span> edeki okoh</a>
+      <nav class="nav">
+        <a href="../index.html#work" class="hide-sm">Work</a>
+        <a href="./index.html" aria-current="page">Learnings</a>
+        <a href="../blog/index.html">Writing</a>
+        <a href="https://github.com/Okohedeki">GitHub</a>
+        <a href="../resume.html" class="cta">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="page-title">
+      <h1>Kernel development</h1>
+      <p class="lead">A practical, staged path for learning GPU / CUDA kernel development — built as a
+      curriculum with deliverables, not a link dump. The spine: CUDA fundamentals → memory &amp;
+      performance → PyTorch integration → Triton → profiling → AI kernels → a portfolio capstone.
+      LeetCode runs alongside so interview fluency builds without hijacking the plan.</p>
+    </div>
+
+    <div class="lrn">
+
+      <div class="callout">
+        <span class="tag">Working principle</span>
+        GPU Mode is not a linear course — it's a resource graph (CUDA, Triton, <code>torch.compile</code>,
+        papers, books, lectures, profilers, PyTorch internals, hardware docs). So I keep <strong>one
+        spine</strong> and pull GPU Mode links in only when they support the project I'm on. The win is
+        artifacts, not a collection of bookmarks.
+      </div>
+
+      <h2><span class="n">A.</span> Learning lanes</h2>
+      <p>Six lanes run in parallel. Each lane has something to study and something to build.</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Lane</th><th>Purpose</th><th>Study</th><th>Build</th></tr></thead>
+          <tbody>
+            <tr><td>CUDA core</td><td>How GPUs actually execute code</td><td>threads, blocks, warps, SMs, memory hierarchy, occupancy, coalescing</td><td>vector add, reduce, scan, matmul, softmax</td></tr>
+            <tr><td>PyTorch perf</td><td>Where ML workloads lose time/memory</td><td>profiler, memory snapshots, <code>torch.compile</code>, custom ops</td><td>profile transformer blocks, fix bottlenecks</td></tr>
+            <tr><td>Triton / DSLs</td><td>The practical ML-kernel route</td><td>Triton vector add, softmax, matmul, layernorm, attention</td><td>Triton versions of the core kernels</td></tr>
+            <tr><td>AI systems kernels</td><td>Connect GPU skills to LLM infra</td><td>FlashAttention, quantization, QLoRA, Mamba, KV cache</td><td>optimized transformer mini-kernels</td></tr>
+            <tr><td>LeetCode</td><td>Interview survival, algorithm fluency</td><td>arrays, hashing, two pointers, sliding window, trees, graphs, DP</td><td>3–5 problems/week, tied to GPU concepts</td></tr>
+            <tr><td>Capstone</td><td>Make the learning visible</td><td>profiling reports, benchmark writeups</td><td>Tiny Transformer Kernel Lab or GPU Order-Book Simulator</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2><span class="n">B.</span> The skill tree</h2>
+      <p>Eight levels, bottom-up. Don't jump ahead — each level is the foundation for the next.</p>
+      <ol class="tree">
+        <li>CUDA syntax &amp; execution model <span>vector add, memory copy, indexing</span></li>
+        <li>Parallel patterns <span>reduce, scan, histogram, atomics</span></li>
+        <li>Memory &amp; performance <span>coalescing, shared memory, tiling, occupancy</span></li>
+        <li>Matmul &amp; AI primitives <span>matmul, softmax, layernorm, attention</span></li>
+        <li>PyTorch integration <span>profiler, memory snapshots, <code>torch.compile</code>, custom ops</span></li>
+        <li>Triton <span>softmax, matmul, layernorm, attention</span></li>
+        <li>Real AI systems <span>FlashAttention, quantization, KV cache, inference bottlenecks</span></li>
+        <li>Portfolio <span>Tiny Transformer Kernel Lab or GPU Order-Book Simulator</span></li>
+      </ol>
+
+      <h2><span class="n">C.</span> The staged path</h2>
+      <p>Roughly a 16-week plan in two-week stages. Each stage pairs GPU work with a matching LeetCode
+      pattern and ends in one concrete artifact.</p>
+
+      <h3 class="stage-h">Stage 0 — Setup <span class="week">week 0</span></h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Task</th><th>Output</th></tr></thead>
+          <tbody>
+            <tr><td>Linux-first dev env (WSL2 or native)</td><td><code>nvidia-smi</code>, <code>nvcc --version</code>, torch CUDA check</td></tr>
+            <tr><td>Create <code>gpu-learning-lab</code> repo</td><td>folder structure (Section G)</td></tr>
+            <tr><td>Install PyTorch from the official selector</td><td><code>torch.cuda.is_available()</code> true</td></tr>
+            <tr><td>Install Nsight Systems + Nsight Compute</td><td>first trace captured</td></tr>
+            <tr><td>Baseline LeetCode</td><td>5 easy problems, timed</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Use the official PyTorch install selector as the source of truth. Don't blindly pin old
+      <code>cu128</code> wheels — CUDA 12.8 binaries were dropped in favor of 13.0, while 12.6 stays
+      available for older drivers.</p>
+
+      <h3 class="stage-h">Stage 1 — CUDA foundations <span class="week">weeks 1–2</span></h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>GPU learning</th><th>Build</th><th>LeetCode</th></tr></thead>
+          <tbody>
+            <tr><td>Thread/block/grid indexing</td><td>vector add</td><td>arrays basics</td></tr>
+            <tr><td>Host ↔ device memory copy</td><td>saxpy</td><td>prefix sums</td></tr>
+            <tr><td>Warps &amp; divergence</td><td>branch-heavy kernel</td><td>two pointers</td></tr>
+            <tr><td>Shared memory basics</td><td>tiled image blur</td><td>sliding window</td></tr>
+            <tr><td>Benchmarking correctly</td><td>timing harness</td><td>hash maps</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout deliver"><span class="tag">Deliverable</span> A one-pager explaining blocks, warps, SMs, the memory hierarchy, and launch overhead.</div>
+
+      <h3 class="stage-h">Stage 2 — Parallel patterns <span class="week">weeks 3–4</span></h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>GPU learning</th><th>Build</th><th>LeetCode</th></tr></thead>
+          <tbody>
+            <tr><td>Reduction</td><td>sum/max reduction kernel</td><td>monotonic stack</td></tr>
+            <tr><td>Scan / prefix sum</td><td>inclusive/exclusive scan</td><td>prefix-sum problems</td></tr>
+            <tr><td>Histogram / atomics</td><td>histogram kernel</td><td>hash counting</td></tr>
+            <tr><td>Memory coalescing</td><td>coalesced vs non-coalesced benchmark</td><td>intervals</td></tr>
+            <tr><td>Occupancy intuition</td><td>block-size experiments</td><td>binary search</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout deliver"><span class="tag">Deliverable</span> Benchmark report: naive vs optimized reduction/scan.</div>
+
+      <h3 class="stage-h">Stage 3 — Matmul progression <span class="week">weeks 5–6</span></h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>GPU learning</th><th>Build</th><th>LeetCode</th></tr></thead>
+          <tbody>
+            <tr><td>Naive matmul</td><td><code>C = A @ B</code></td><td>matrix problems</td></tr>
+            <tr><td>Coalesced loads</td><td>faster matmul</td><td>2D grid traversal</td></tr>
+            <tr><td>Shared-memory tiling</td><td>tiled matmul</td><td>divide &amp; conquer</td></tr>
+            <tr><td>Register tiling</td><td>improved matmul</td><td>heap basics</td></tr>
+            <tr><td>Compare to cuBLAS</td><td>benchmark table</td><td>top-k</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout deliver"><span class="tag">Deliverable</span> "How my matmul got faster" writeup — the first serious portfolio piece. Matmul is the Rosetta Stone of GPU performance; don't skip it.</div>
+
+      <h3 class="stage-h">Stage 4 — PyTorch performance <span class="week">weeks 7–8</span></h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Learning</th><th>Build</th><th>LeetCode</th></tr></thead>
+          <tbody>
+            <tr><td>PyTorch profiler</td><td>profile a tiny transformer block</td><td>trees</td></tr>
+            <tr><td>GPU memory snapshots</td><td>find allocation spikes</td><td>recursion</td></tr>
+            <tr><td><code>torch.compile</code></td><td>compile a block &amp; measure</td><td>graphs intro</td></tr>
+            <tr><td>Graph breaks</td><td>create/fix graph-break examples</td><td>BFS/DFS</td></tr>
+            <tr><td>Data movement</td><td>CPU/GPU transfer benchmark</td><td>shortest path</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout deliver"><span class="tag">Deliverable</span> A profiling report with before/after latency + memory and a bottleneck explanation. This is closer to ML-systems work than pure CUDA.</div>
+
+      <h3 class="stage-h">Stage 5 — Custom PyTorch CUDA ops <span class="week">weeks 9–10</span></h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Learning</th><th>Build</th><th>LeetCode</th></tr></thead>
+          <tbody>
+            <tr><td>C++ extension basics</td><td>CPU custom op</td><td>linked list</td></tr>
+            <tr><td>CUDA extension</td><td><code>mymuladd</code> CUDA op</td><td>simple API design</td></tr>
+            <tr><td>Autograd path</td><td>custom backward / wrapper</td><td>DP intro</td></tr>
+            <tr><td>Testing</td><td>correctness + tolerance tests</td><td>DP 1D</td></tr>
+            <tr><td>Packaging</td><td>installable local wheel</td><td>DP 2D</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout deliver"><span class="tag">Deliverable</span> One custom CUDA op integrated into PyTorch — high-signal proof you can cross the Python ↔ systems boundary.</div>
+
+      <h3 class="stage-h">Stage 6 — Triton <span class="week">weeks 11–12</span></h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Learning</th><th>Build</th><th>LeetCode</th></tr></thead>
+          <tbody>
+            <tr><td>Triton model</td><td>vector add</td><td>arrays review</td></tr>
+            <tr><td>Program IDs / blocks</td><td>softmax</td><td>sliding window review</td></tr>
+            <tr><td>Masking</td><td>variable-size softmax</td><td>binary search review</td></tr>
+            <tr><td>Matmul</td><td>Triton matmul</td><td>graph review</td></tr>
+            <tr><td>LayerNorm</td><td>Triton layernorm</td><td>DP review</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout deliver"><span class="tag">Deliverable</span> A CUDA-vs-Triton comparison for softmax or layernorm. The point isn't "Triton is easier" — it's explaining the tradeoff: Triton authors ML-shaped kernels faster; CUDA/CUTLASS give lower-level control when you need to squeeze the hardware.</div>
+
+      <h3 class="stage-h">Stage 7 — AI kernel case studies <span class="week">weeks 13–14</span></h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Learning</th><th>Build</th><th>LeetCode</th></tr></thead>
+          <tbody>
+            <tr><td>FlashAttention intuition</td><td>naive attention benchmark</td><td>matrix + prefix review</td></tr>
+            <tr><td>Online softmax</td><td>stable-softmax notes</td><td>numerical edge cases</td></tr>
+            <tr><td>KV cache</td><td>inference memory benchmark</td><td>LRU / cache</td></tr>
+            <tr><td>Quantization</td><td>int8 / nf4 notes</td><td>bit manipulation</td></tr>
+            <tr><td>Mamba / scan link</td><td>selective-scan notes</td><td>prefix / scan</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout deliver"><span class="tag">Deliverable</span> A "why attention is memory-bound" one-pager plus a small benchmark.</div>
+
+      <h3 class="stage-h">Stage 8 — Capstone <span class="week">weeks 15–16</span></h3>
+      <p>Pick one. My order: <strong>Tiny Transformer Kernel Lab</strong> first (most legible for AI-infra
+      roles — softmax, layernorm, matmul, attention, KV-cache profiling, <code>torch.compile</code>,
+      Triton, custom CUDA ops), then the <strong>GPU-Accelerated Order-Book Simulator</strong> as the
+      "I can apply GPU systems outside ML too" piece.</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Capstone</th><th>Why it fits</th></tr></thead>
+          <tbody>
+            <tr><td>Tiny Transformer Kernel Lab</td><td>best fit for AI-infra roles</td></tr>
+            <tr><td>GPU Order-Book Simulator</td><td>strong systems + CUDA signal</td></tr>
+            <tr><td>PyTorch Profiling Clinic</td><td>practical MLOps/platform signal</td></tr>
+            <tr><td>Triton Kernel Zoo for Tiny LLMs</td><td>inference/platform portfolio</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2><span class="n">D.</span> Weekly cadence</h2>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Day</th><th>Work</th></tr></thead>
+          <tbody>
+            <tr><td>Mon</td><td>Read/watch one GPU Mode lecture or resource</td></tr>
+            <tr><td>Tue</td><td>Implement the simplest version</td></tr>
+            <tr><td>Wed</td><td>Optimize or benchmark</td></tr>
+            <tr><td>Thu</td><td>Profile and write notes</td></tr>
+            <tr><td>Fri</td><td>LeetCode + review</td></tr>
+            <tr><td>Weekend</td><td>Finish the artifact: one-pager, benchmark, or repo cleanup</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>LeetCode volume is <strong>3–5 problems/week</strong>, not 20. The goal is interview-safe while
+      building rare GPU/AI-systems skills — not competitive programming.</p>
+
+      <h2><span class="n">E.</span> LeetCode ↔ GPU mapping</h2>
+      <p>The point of pairing: LeetCode reinforces the same computational patterns the GPU work uses.</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>GPU topic</th><th>LeetCode pattern</th></tr></thead>
+          <tbody>
+            <tr><td>Elementwise kernels</td><td>arrays</td></tr>
+            <tr><td>Coalescing / indexing</td><td>matrix traversal</td></tr>
+            <tr><td>Prefix sum / scan</td><td>prefix sums</td></tr>
+            <tr><td>Reduction</td><td>stack, heap, divide &amp; conquer</td></tr>
+            <tr><td>Histogram / atomics</td><td>hash maps, counting</td></tr>
+            <tr><td>Shared-memory tiling</td><td>sliding window / locality</td></tr>
+            <tr><td>Execution scheduling</td><td>graphs</td></tr>
+            <tr><td>KV cache / memory mgmt</td><td>LRU cache, design</td></tr>
+            <tr><td>Quantization / bit packing</td><td>bit manipulation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2><span class="n">F.</span> What I'm skipping at first</h2>
+      <p>Discipline = not collecting resources forever. These come later, if at all.</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Topic</th><th>Why not yet</th></tr></thead>
+          <tbody>
+            <tr><td>CUTLASS internals</td><td>too much abstraction before matmul intuition</td></tr>
+            <tr><td>PTX / SASS deep dive</td><td>useful later, distracting early</td></tr>
+            <tr><td>Hopper-only (TMA/WGMMA)</td><td>my RTX 4090 is Ada, not H100</td></tr>
+            <tr><td>ThunderKittens internals</td><td>read for philosophy first</td></tr>
+            <tr><td>TVM / TACO / Mosaic</td><td>compiler rabbit hole</td></tr>
+            <tr><td>All hardware whitepapers</td><td>skim only when needed</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2><span class="n">G.</span> Repo structure</h2>
+      <pre>gpu-learning-lab/
+  00_env_checks/        check_cuda.py · check_torch.py · bandwidth_test.cu
+  01_cuda_basics/       vector_add · image_blur · reduce · scan
+  02_matmul/            naive · coalesced · tiled_shared · register_tiled · benchmark_report.md
+  03_pytorch_perf/      profiler_basics · memory_snapshots · torch_compile_tests
+  04_triton/            vector_add · softmax · matmul · layernorm · attention
+  05_custom_ops/        cpp_extension · cuda_extension
+  06_ai_kernels/        flash_attention_notes · quantization_notes · kv_cache_benchmarks
+  07_capstone/          gpu_order_book_simulator | tiny_transformer_kernel_lab
+  leetcode/             arrays_hashing · two_pointers · sliding_window · trees_graphs · dp
+  notes/                one_pagers · interview_answers · profiling_reports</pre>
+      <p>Every project produces one artifact: a benchmark table, a profiling screenshot, a one-page
+      explanation, or a clean implementation.</p>
+
+      <h2><span class="n">H.</span> First 30 days</h2>
+      <ul>
+        <li><strong>Week 1</strong> — intro CUDA material; build vector add + saxpy; write a timing harness; LeetCode: arrays + hash maps (5).</li>
+        <li><strong>Week 2</strong> — thread/block/grid + memory hierarchy; build image blur / simple stencil; benchmark block sizes; LeetCode: two pointers + sliding window (5).</li>
+        <li><strong>Week 3</strong> — build reduction; compare global-memory vs shared-memory; profile with Nsight Compute; LeetCode: prefix sums + stack (4).</li>
+        <li><strong>Week 4</strong> — build scan/prefix sum; read GPU Gems scan / CUB conceptually; one-pager on scan &amp; why it matters for state-space models; LeetCode: binary search + intervals (4).</li>
+      </ul>
+
+      <h2><span class="n">I.</span> Reference shelf</h2>
+      <p>Pulled in when a project needs them — <strong>PMPP is the spine</strong>, the rest are applied
+      commentary or reference.</p>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Resource</th><th>How I use it</th></tr></thead>
+          <tbody>
+            <tr><td><em>Programming Massively Parallel Processors</em></td><td>the main book / spine</td></tr>
+            <tr><td><a href="https://github.com/gpu-mode/resource-stream">GPU Mode resource-stream</a></td><td>the resource graph (CUDA, Triton, papers, tools)</td></tr>
+            <tr><td><a href="https://github.com/gpu-mode/lectures">GPU Mode lectures</a></td><td>the more course-like applied sequence</td></tr>
+            <tr><td><a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/">CUDA C++ Programming Guide</a></td><td>reference, not a cover-to-cover read</td></tr>
+            <tr><td><a href="https://siboehm.com/articles/22/CUDA-MMM">Simon Boehm — CUDA matmul worklog</a></td><td>naive → cuBLAS-level, step by step</td></tr>
+            <tr><td><a href="https://triton-lang.org/main/getting-started/tutorials/index.html">Triton tutorials</a></td><td>vector add → softmax → matmul → attention</td></tr>
+            <tr><td><a href="https://pytorch.org/tutorials/advanced/cpp_custom_ops.html">PyTorch custom C++/CUDA ops</a></td><td>the blessed path for authoring custom operators</td></tr>
+            <tr><td><a href="https://pytorch.org/get-started/locally/">PyTorch install selector</a></td><td>source of truth for the local install</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <a class="back" href="../index.html">← Back to home</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span class="copy">© 2026 Edeki Okoh — built by hand, no framework.</span>
+      <div class="links">
+        <a href="https://github.com/Okohedeki">GitHub</a>
+        <a href="mailto:okohedeki@gmail.com">Email</a>
+        <a href="../resume.html">Résumé</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

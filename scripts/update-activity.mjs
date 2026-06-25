@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Regenerate the "Recently shipped" feed on the home page from recent commits
+// Regenerate the "Recent activity" feed on the home page from recent commits
 // across the public project repos. Zero dependencies — Node 20+ (global fetch).
 //
 //   node scripts/update-activity.mjs

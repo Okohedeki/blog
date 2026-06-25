@@ -3,12 +3,13 @@
 My personal site — half résumé, half blog. Static HTML/CSS, zero build step, zero
 dependencies (fonts load from Google Fonts).
 
-- **`index.html`** — home: hero, *Selected work*, *Recently shipped* feed, *Experience*, toolkit, writing.
+- **`index.html`** — home: hero, *Projects*, *Recent activity* feed, *Experience*, toolkit, notes.
 - **`resume.html`** — full, print-ready résumé page (Cmd-P → Save as PDF). `Edeki-Okoh-Resume.docx` is the download.
+- **`learnings/index.html`** — staged curriculum page (currently: GPU / CUDA kernel development).
 - **`blog/index.html`** — the writing index (mine to fill).
 - **`blog/posts/`** — one HTML file per post (`YYYY-MM-DD-slug.html`) + `_template.html`.
 - **`styles.css`** — the whole design (dark editorial: Fraunces + Hanken Grotesk + JetBrains Mono).
-- **`scripts/update-activity.mjs`** — regenerates the *Recently shipped* feed from commits (see below).
+- **`scripts/update-activity.mjs`** — regenerates the *Recent activity* feed from commits (see below).
 
 ## Run it locally
 
@@ -32,9 +33,9 @@ The "Résumé" links point to `resume.html` (a styled, print-ready page) and off
 `.docx`, and adjust the *Experience* summary in `index.html`. Prefer a real PDF? Drop one
 in and repoint the links.
 
-## Recently shipped feed (auto)
+## Recent activity feed (auto)
 
-The *Recently shipped* list on the home page is generated from recent commits across the
+The *Recent activity* list on the home page is generated from recent commits across the
 public project repos (airlock, VaultOP, markov-engine, MathRL). It leads with features and
 milestones — `fix`/`chore`/`docs`/`test` commits are filtered out (tune the `DROP` regexes
 in the script to taste).
