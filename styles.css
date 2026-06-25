@@ -197,7 +197,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .exp-compact .role { font-family: var(--mono); font-size: 0.8rem; color: var(--ink); margin-bottom: 0.55rem; letter-spacing: -0.01em; }
 .exp-compact .role span { color: var(--faint); }
 .exp-compact p { color: var(--muted); }
-.exp-compact .resume-actions { margin-top: 1.3rem; display: flex; gap: 0.7rem; flex-wrap: wrap; }
+.exp-compact .resume-link { margin-top: 1rem; font-family: var(--mono); font-size: 0.82rem; }
+.exp-compact .resume-link a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); transition: color 0.16s; }
+.exp-compact .resume-link a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 
 /* ============================================================
    Toolkit
