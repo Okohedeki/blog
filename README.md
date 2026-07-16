@@ -1,12 +1,12 @@
 # blog
 
-My personal site — a minimal project and work-log page. Static HTML/CSS, zero build step, zero
-dependencies (fonts load from Google Fonts). Writing lives on Substack, not here.
+My personal site — a minimal project and work-log page. Static HTML/CSS, zero build step,
+zero dependencies, and system fonts only. Writing lives on Substack, not here.
 
 - **`index.html`** — home: introduction, projects, latest agent-work day, and toolkit.
 - **`learnings/index.html`** — staged curriculum page (currently: GPU / CUDA kernel development).
 - **`worklog/`** — manually published daily agent-work graph snapshots and the shared renderer.
-- **`styles.css`** — the whole design (Schibsted Grotesk + Hanken Grotesk + JetBrains Mono).
+- **`styles.css`** — the paper-toned, narrow-column blog design.
 
 ## Run it locally
 
