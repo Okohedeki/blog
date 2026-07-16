@@ -3,7 +3,7 @@
 My personal site — a minimal project and work-log page. Static HTML/CSS, zero build step,
 zero dependencies, and system fonts only. Writing lives on Substack, not here.
 
-- **`index.html`** — home: introduction, projects, latest agent-work day, and toolkit.
+- **`index.html`** — home: introduction, projects, and the latest agent-work day.
 - **`learnings/index.html`** — staged curriculum page (currently: GPU / CUDA kernel development).
 - **`worklog/`** — manually published daily agent-work graph snapshots and the shared renderer.
 - **`styles.css`** — the paper-toned, narrow-column blog design.

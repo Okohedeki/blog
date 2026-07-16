@@ -209,16 +209,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 }
 
 /* ============================================================
-   Toolkit
-   ============================================================ */
-.toolkit { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-.tool-group { background: var(--bg); padding: 1.3rem 1.4rem; }
-.tool-group h4 { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); font-weight: 500; margin-bottom: 0.85rem; }
-.tool-group ul { display: flex; flex-direction: column; gap: 0.4rem; }
-.tool-group li { font-size: 0.92rem; color: var(--muted); }
-.tool-group li::before { content: "›"; color: var(--faint); margin-right: 0.5rem; }
-
-/* ============================================================
    Learnings / curriculum
    ============================================================ */
 .page-title { padding: 4rem 0 2rem; }
@@ -420,11 +410,6 @@ a:hover { color: var(--accent-2); }
 .agent-node.is-selected { stroke: var(--accent); }
 .agent-graph-tooltip { background: var(--bg); border-color: var(--line); border-radius: 3px; }
 
-.toolkit { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; background: transparent; border: 0; border-radius: 0; }
-.tool-group { padding: 0; background: transparent; }
-.tool-group h4 { font-family: var(--display); font-size: 1rem; text-transform: none; letter-spacing: 0; }
-.tool-group li::before { content: "–"; }
-
 .page-title { padding: 3rem 0 1.5rem; text-align: center; }
 .page-title h1, .lrn h2 { font-family: var(--display); }
 
@@ -436,7 +421,6 @@ footer .email { font-family: var(--sans); color: var(--accent); }
 @media (max-width: 560px) {
   body { padding: 0 0.9rem; font-size: 16px; }
   .site-head .wrap { align-items: center; }
-  .toolkit { grid-template-columns: 1fr; }
   .agent-graph-stage { height: 30rem; }
 }
 
