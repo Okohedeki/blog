@@ -182,8 +182,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .agent-graph-stage.is-dragging { cursor: grabbing; }
 .agent-graph-stage svg { display: block; width: 100%; height: 100%; }
 .agent-lane, .agent-tick { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.agent-edge { fill: none; stroke: var(--faint); stroke-width: 1.2; opacity: 0.65; vector-effect: non-scaling-stroke; }
-.agent-edge.delegation { stroke: var(--ink); }
+.agent-edge { fill: none; stroke: var(--faint); stroke-width: 1.2; opacity: 0.42; vector-effect: non-scaling-stroke; }
+.agent-edge.delegation { stroke: var(--ink); opacity: 0.5; }
 .agent-node { cursor: pointer; stroke: var(--bg); stroke-width: 2; vector-effect: non-scaling-stroke; }
 .agent-node.task { fill: var(--signal); }
 .agent-node.main { fill: var(--ink); }
@@ -192,7 +192,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .agent-node-label, .agent-lane-label, .agent-tick-label {
   fill: var(--muted); font-family: var(--mono); font-size: 11px; pointer-events: none;
 }
-.agent-node-label { fill: var(--ink); }
+.agent-node-label { fill: var(--ink); font-size: 12px; font-weight: 600; }
 .agent-tick-label { text-anchor: middle; }
 .agent-graph-tooltip {
   position: absolute; z-index: 2; max-width: 18rem; padding: 0.5rem 0.65rem;
@@ -202,8 +202,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 }
 .agent-graph-tooltip strong { display: block; font-weight: 500; }
 .agent-graph-tooltip span { color: var(--faint); }
-.agent-graph-detail { min-height: 2.8rem; padding-top: 0.8rem; color: var(--muted); font-size: 0.86rem; overflow-wrap: anywhere; }
-.agent-graph-detail strong { color: var(--ink); font-weight: 500; }
+.agent-graph-detail { padding-top: 1rem; color: var(--muted); font-size: 0.86rem; overflow-wrap: anywhere; }
+.agent-graph-detail > p { margin: 0; }
+.agent-detail-table { width: 100%; border-collapse: collapse; color: var(--ink); table-layout: fixed; }
+.agent-detail-table caption { padding: 0 0 0.55rem; text-align: left; font-family: var(--mono); font-size: 0.72rem; color: var(--faint); }
+.agent-detail-table th, .agent-detail-table td { padding: 0.65rem 0.8rem; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
+.agent-detail-table th { width: 8.5rem; color: var(--muted); font-family: var(--mono); font-size: 0.74rem; font-weight: 500; }
+.agent-detail-table td { line-height: 1.5; overflow-wrap: anywhere; }
 @media (max-width: 560px) {
   .agent-graph-stage { height: 34rem; min-height: 0; }
 }

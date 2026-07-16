@@ -7,6 +7,8 @@
   var svg = document.getElementById("agent-work-graph");
   var viewport = document.getElementById("agent-graph-viewport");
   var detail = document.getElementById("agent-graph-detail");
+  var detailTable = detail && detail.querySelector(".agent-detail-table");
+  var detailRows = detailTable && detailTable.querySelector("tbody");
   var tooltip = document.getElementById("agent-graph-tooltip");
   if (!data || !stage || !svg || !viewport || !detail || !tooltip) return;
 
@@ -30,6 +32,14 @@
 
   function tokens(value) {
     return value == null ? "usage unavailable" : new Intl.NumberFormat().format(value) + " observed tokens";
+  }
+
+  function kindLabel(kind) {
+    return { main: "Coordinator", task: "Workstream", subagent: "Subagent" }[kind] || kind;
+  }
+
+  function summary(value) {
+    return String(value || "No summary published.").replace(/\s+/g, " ").trim();
   }
 
   function applyTransform() {
@@ -63,6 +73,23 @@
     detail.innerHTML = "<strong>" + safe(node.label) + "</strong> · " + safe(node.time) + " · " + safe(tokens(node.tokens)) + " — " + safe(node.detail);
   }
 
+  function select(mark, node) {
+    viewport.querySelectorAll(".agent-node.is-selected").forEach(function (item) { item.classList.remove("is-selected"); });
+    mark.classList.add("is-selected");
+    if (!detailTable || !detailRows) return;
+    detailRows.innerHTML = [
+      ["Conversation", node.label],
+      ["Type", kindLabel(node.kind)],
+      ["Status", node.status || "unknown"],
+      ["Started", node.time || "unknown"],
+      ["Usage", tokens(node.tokens)],
+      ["Summary", summary(node.detail)]
+    ].map(function (row) {
+      return "<tr><th scope=\"row\">" + safe(row[0]) + "</th><td>" + safe(row[1]) + "</td></tr>";
+    }).join("");
+    detailTable.hidden = false;
+  }
+
   data.nodes.forEach(function (node) {
     var group = create("g");
     var mark;
@@ -78,7 +105,9 @@
     mark.setAttribute("tabindex", "0");
     mark.setAttribute("aria-label", node.label + ", " + tokens(node.tokens));
     group.appendChild(mark);
-    group.appendChild(create("text", { x: node.x + node.radius + 6, y: node.y + 4, class: "agent-node-label" }, node.label));
+    if (node.kind !== "subagent") {
+      group.appendChild(create("text", { x: node.x + node.radius + 7, y: node.y + 4, class: "agent-node-label" }, node.label));
+    }
     viewport.appendChild(group);
 
     mark.addEventListener("mouseenter", function () {

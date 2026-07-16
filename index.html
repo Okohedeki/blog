@@ -149,7 +149,13 @@
               </svg>
               <div class="agent-graph-tooltip" id="agent-graph-tooltip" hidden></div>
             </div>
-            <p class="agent-graph-detail" id="agent-graph-detail">Select a task or agent to see its summary.</p>
+            <div class="agent-graph-detail" id="agent-graph-detail" aria-live="polite">
+              <p>Select a task or agent to inspect its conversation record.</p>
+              <table class="agent-detail-table" hidden>
+                <caption>Selected conversation</caption>
+                <tbody></tbody>
+              </table>
+            </div>
           </div>
         </details>
       </div>
