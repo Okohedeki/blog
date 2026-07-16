@@ -87,11 +87,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .nav { display: flex; gap: 1.4rem; align-items: center; }
 .nav a { font-family: var(--mono); font-size: 0.8rem; color: var(--faint); transition: color 0.16s; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
-.nav a.cta {
-  color: var(--on-accent); background: var(--ink); border: 1px solid var(--ink);
-  padding: 0.32rem 0.75rem; border-radius: 7px; transition: opacity 0.16s;
-}
-.nav a.cta:hover { color: var(--on-accent); opacity: 0.82; }
 @media (max-width: 560px) { .nav { gap: 1rem; } .nav .hide-sm { display: none; } }
 
 /* ============================================================
@@ -116,29 +111,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 }
 .hero .lede strong { color: var(--ink); font-weight: 600; }
 
-.status {
-  display: inline-flex; align-items: center; gap: 0.55rem;
-  font-family: var(--mono); font-size: 0.78rem; color: var(--muted);
-  margin-top: 1.9rem; padding: 0.4rem 0.85rem;
-  border: 1px solid var(--line); border-radius: 999px; background: var(--bg-2);
-}
-.status .dot {
-  width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--signal); flex: 0 0 auto;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--signal) 18%, transparent);
-}
-
-.actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.7rem; }
-.btn {
-  font-family: var(--mono); font-size: 0.82rem; letter-spacing: -0.01em;
-  padding: 0.62rem 1.1rem; border-radius: 8px; transition: all 0.16s;
-  display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--line);
-}
-.btn .arr { transition: transform 0.16s; }
-.btn:hover .arr { transform: translateX(3px); }
-.btn-primary { background: var(--ink); color: var(--on-accent); border-color: var(--ink); font-weight: 500; }
-.btn-primary:hover { opacity: 0.85; }
-.btn-ghost { color: var(--ink); background: var(--bg); }
-.btn-ghost:hover { border-color: var(--ink); }
+.contact-line { margin-top: 1.6rem; font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
+.contact-line a:hover { color: var(--ink); }
 
 /* ============================================================
    Section scaffolding
@@ -194,19 +168,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
    Daily agent work graph
    ============================================================ */
 .agent-work-wrap { max-width: 76rem; }
-.agent-work-intro { color: var(--muted); max-width: 44rem; margin-bottom: 1.4rem; }
-.agent-graph-meta {
-  display: flex; align-items: center; flex-wrap: wrap; gap: 0.65rem 1.2rem;
-  font-family: var(--mono); font-size: 0.72rem; color: var(--faint); margin-bottom: 0.8rem;
+.agent-day { border-block: 1px solid var(--line); }
+.agent-day summary {
+  padding: 1rem 0; cursor: pointer; font-family: var(--mono); font-size: 0.82rem;
+  color: var(--ink); list-style-position: inside;
 }
-.agent-graph-meta span { display: inline-flex; align-items: center; gap: 0.42rem; }
-.agent-key { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--faint); }
-.agent-key.task { border-radius: 1px; background: var(--signal); transform: rotate(45deg); }
-.agent-key.main { background: var(--ink); }
-.agent-key.worker { background: var(--faint); }
+.agent-day summary::marker { color: var(--faint); }
+.agent-day-body { padding-bottom: 0.8rem; }
 .agent-graph-stage {
-  position: relative; height: min(68vh, 45rem); min-height: 32rem; overflow: hidden;
-  border-block: 1px solid var(--line); background: var(--bg); cursor: grab; touch-action: none;
+  position: relative; height: min(64vh, 42rem); min-height: 30rem; overflow: hidden;
+  border-top: 1px solid var(--line); background: var(--bg); cursor: grab; touch-action: none;
 }
 .agent-graph-stage.is-dragging { cursor: grabbing; }
 .agent-graph-stage svg { display: block; width: 100%; height: 100%; }
@@ -227,38 +198,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
   position: absolute; z-index: 2; max-width: 18rem; padding: 0.5rem 0.65rem;
   border: 1px solid var(--line); border-radius: 7px; background: var(--surface);
   color: var(--ink); font-family: var(--mono); font-size: 0.7rem;
-  box-shadow: 0 0.7rem 2rem rgb(0 0 0 / 8%); pointer-events: none;
+  pointer-events: none;
 }
 .agent-graph-tooltip strong { display: block; font-weight: 500; }
 .agent-graph-tooltip span { color: var(--faint); }
-.agent-graph-foot {
-  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 1rem;
-  min-height: 3.5rem; border-bottom: 1px solid var(--line);
-}
-.agent-graph-foot p { color: var(--muted); font-size: 0.88rem; overflow-wrap: anywhere; }
-.agent-graph-foot p strong { color: var(--ink); font-weight: 500; }
-.agent-graph-controls { display: flex; gap: 0.45rem; }
-.agent-graph-controls button {
-  border: 1px solid var(--line); border-radius: 6px; padding: 0.38rem 0.62rem;
-  background: var(--bg); color: var(--muted); font-family: var(--mono); font-size: 0.7rem; cursor: pointer;
-}
-.agent-graph-controls button:hover { border-color: var(--ink); color: var(--ink); }
+.agent-graph-detail { min-height: 2.8rem; padding-top: 0.8rem; color: var(--muted); font-size: 0.86rem; overflow-wrap: anywhere; }
+.agent-graph-detail strong { color: var(--ink); font-weight: 500; }
 @media (max-width: 560px) {
   .agent-graph-stage { height: 34rem; min-height: 0; }
-  .agent-graph-foot { grid-template-columns: 1fr; padding: 0.8rem 0; }
-  .agent-graph-controls { justify-content: flex-end; }
 }
-
-/* ============================================================
-   Experience (compact)
-   ============================================================ */
-.exp-compact { max-width: 44rem; }
-.exp-compact .role { font-family: var(--mono); font-size: 0.8rem; color: var(--ink); margin-bottom: 0.55rem; letter-spacing: -0.01em; }
-.exp-compact .role span { color: var(--faint); }
-.exp-compact p { color: var(--muted); }
-.exp-compact .resume-link { margin-top: 1rem; font-family: var(--mono); font-size: 0.82rem; }
-.exp-compact .resume-link a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); transition: color 0.16s; }
-.exp-compact .resume-link a:hover { color: var(--ink); text-decoration-color: var(--ink); }
 
 /* ============================================================
    Toolkit
@@ -381,6 +329,5 @@ table.tbl td code { white-space: nowrap; }
 footer { border-top: 1px solid var(--line); margin-top: 2rem; padding: 3rem 0 4rem; }
 footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
 footer .copy { font-family: var(--mono); font-size: 0.76rem; color: var(--faint); }
-footer .links { display: flex; gap: 1.3rem; }
-footer .links a { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
-footer .links a:hover { color: var(--ink); }
+footer .email { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+footer .email:hover { color: var(--ink); }

@@ -105,11 +105,6 @@
     applyTransform();
   }
 
-  function reset() {
-    transform = { x: 0, y: 0, k: 0.88 };
-    applyTransform();
-  }
-
   stage.addEventListener("wheel", function (event) {
     event.preventDefault();
     transform.k = Math.max(0.22, Math.min(2.8, transform.k * (event.deltaY < 0 ? 1.08 : 1 / 1.08)));
@@ -132,7 +127,8 @@
     applyTransform();
   });
   stage.addEventListener("pointerup", function () { drag = null; stage.classList.remove("is-dragging"); });
-  document.getElementById("agent-graph-fit").addEventListener("click", fitDay);
-  document.getElementById("agent-graph-reset").addEventListener("click", reset);
-  reset();
+  document.getElementById("agent-day").addEventListener("toggle", function (event) {
+    if (event.currentTarget.open) window.requestAnimationFrame(fitDay);
+  });
+  applyTransform();
 })();
