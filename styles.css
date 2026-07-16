@@ -176,7 +176,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .agent-day summary::marker { color: var(--faint); }
 .agent-day-body { padding-bottom: 0.8rem; }
 .agent-graph-stage {
-  position: relative; height: min(64vh, 42rem); min-height: 30rem; overflow: hidden;
+  position: relative; height: min(72vh, 52rem); min-height: 38rem; overflow: hidden;
   border-top: 1px solid var(--line); background: var(--bg); cursor: grab; touch-action: none;
 }
 .agent-graph-stage.is-dragging { cursor: grabbing; }
@@ -210,7 +210,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .agent-detail-table th { width: 8.5rem; color: var(--muted); font-family: var(--mono); font-size: 0.74rem; font-weight: 500; }
 .agent-detail-table td { line-height: 1.5; overflow-wrap: anywhere; }
 @media (max-width: 560px) {
-  .agent-graph-stage { height: 34rem; min-height: 0; }
+  .agent-graph-stage { height: 38rem; min-height: 0; }
 }
 
 /* ============================================================
