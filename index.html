@@ -19,6 +19,7 @@
       <a class="brand" href="./index.html"><span class="mark">EO</span> edeki okoh</a>
       <nav class="nav">
         <a href="#work" class="hide-sm">Work</a>
+        <a href="#agent-work" class="hide-sm">Agent log</a>
         <a href="./learnings/index.html">Learnings</a>
         <a href="https://github.com/Okohedeki">GitHub</a>
         <a href="./Edeki-Okoh-Resume.docx" class="cta">Résumé</a>
@@ -141,11 +142,46 @@
       </div>
     </section>
 
+    <!-- ===== Daily agent work ===== -->
+    <section class="section" id="agent-work">
+      <div class="wrap agent-work-wrap">
+        <div class="section-head">
+          <h2><span class="idx">02</span> A day with my agents</h2>
+          <span class="note">July 14, 2026 · 4 workstreams · 24 delegated tasks</span>
+        </div>
+        <p class="agent-work-intro">
+          A snapshot of what I built with coding agents that day. Tasks form the lanes,
+          delegation forms the edges, time runs left to right, and larger nodes used more tokens.
+        </p>
+        <div class="agent-graph-meta" aria-hidden="true">
+          <span><i class="agent-key task"></i> Task</span>
+          <span><i class="agent-key main"></i> Main agent</span>
+          <span><i class="agent-key worker"></i> Subagent</span>
+          <span>Drag to explore · scroll to zoom</span>
+        </div>
+        <div class="agent-graph-stage" id="agent-graph-stage">
+          <svg id="agent-work-graph" viewBox="0 0 1240 720" role="img" aria-labelledby="agent-graph-title agent-graph-desc">
+            <title id="agent-graph-title">Edeki Okoh's agent work graph for July 14, 2026</title>
+            <desc id="agent-graph-desc">Four workstream lanes connected to a coordinating agent and 24 subagents, arranged by time. Node size represents observed token usage.</desc>
+            <g id="agent-graph-viewport"></g>
+          </svg>
+          <div class="agent-graph-tooltip" id="agent-graph-tooltip" hidden></div>
+        </div>
+        <div class="agent-graph-foot">
+          <p id="agent-graph-detail">Select a task or agent to see its retained summary.</p>
+          <div class="agent-graph-controls">
+            <button type="button" id="agent-graph-fit">Fit day</button>
+            <button type="button" id="agent-graph-reset">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Experience / résumé ===== -->
     <section class="section" id="experience">
       <div class="wrap">
         <div class="section-head">
-          <h2><span class="idx">02</span> Experience</h2>
+          <h2><span class="idx">03</span> Experience</h2>
           <span class="note">the short version</span>
         </div>
         <div class="exp-compact">
@@ -160,7 +196,7 @@
     <section class="section" id="toolkit">
       <div class="wrap">
         <div class="section-head">
-          <h2><span class="idx">03</span> Toolkit</h2>
+          <h2><span class="idx">04</span> Toolkit</h2>
           <span class="note">what I reach for</span>
         </div>
         <div class="toolkit">
@@ -220,5 +256,7 @@
       </div>
     </div>
   </footer>
+  <script src="./worklog/2026-07-14.js"></script>
+  <script src="./worklog/agent-graph.js"></script>
 </body>
 </html>

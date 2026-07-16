@@ -6,7 +6,8 @@ dependencies (fonts load from Google Fonts). Writing lives on Substack, not here
 - **`index.html`** — home: hero, *Projects* (each stated as *why* it exists), *Experience*, toolkit.
 - **`Edeki-Okoh-Resume.docx`** — the résumé; every "Résumé" link points straight to this download.
 - **`learnings/index.html`** — staged curriculum page (currently: GPU / CUDA kernel development).
-- **`styles.css`** — the whole design (dark editorial: Fraunces + Hanken Grotesk + JetBrains Mono).
+- **`worklog/`** — manually published daily agent-work graph snapshots and the shared renderer.
+- **`styles.css`** — the whole design (Schibsted Grotesk + Hanken Grotesk + JetBrains Mono).
 
 ## Run it locally
 
@@ -21,6 +22,12 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 The project cards in `index.html` are written by hand — each leads with *why* the project
 exists rather than a feature list. Public repos link out; private ones are shown without a
 link. Edit the `<article class="project">` blocks directly to add, drop, or reorder.
+
+## Agent work log
+
+The homepage includes one manually selected day of work with coding agents. The committed
+snapshot under `worklog/` contains only the graph data chosen for public display. Replace it
+by hand when publishing a different day; there is intentionally no automatic upload path.
 
 ## Résumé
 
