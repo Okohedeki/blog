@@ -214,6 +214,51 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 }
 
 /* ============================================================
+   Quiet editorial layout
+   ============================================================ */
+body { font-size: 0.94rem; line-height: 1.7; }
+.wrap { max-width: 44rem; margin: 0; padding: 0 2.5rem; }
+.site-head { position: static; border: 0; background: transparent; backdrop-filter: none; }
+.site-head .wrap { height: auto; padding-top: 1.6rem; }
+.brand { font-size: 0.72rem; }
+.brand .mark { display: none; }
+.nav { margin-left: auto; gap: 1rem; }
+.nav a { font-size: 0.72rem; color: var(--muted); text-decoration: underline; text-underline-offset: 0.16em; }
+.hero { padding: 6.5rem 0 2.4rem; }
+.kicker { display: none; }
+.hero h1 { font-family: var(--sans); font-size: 1rem; font-weight: 600; letter-spacing: 0; line-height: 1.35; border-bottom: 1px solid var(--ink); padding-bottom: 0.3rem; }
+.hero .lede { max-width: 40rem; margin-top: 1.7rem; font-size: 0.94rem; line-height: 1.7; color: var(--ink); }
+.contact-line { margin-top: 1.7rem; font-size: 0.82rem; }
+.contact-line a, .project h3 a, .section-head .note a { text-decoration: underline; text-underline-offset: 0.15em; }
+.section { padding: 1.7rem 0 0; border: 0; }
+.section-head { margin-bottom: 0.7rem; }
+.section-head h2 { font-family: var(--sans); font-size: 0.94rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.section-head h2 .idx, .section-head .note { display: none; }
+.project { grid-template-columns: 1fr; padding: 1.1rem 0; border: 0; gap: 0; }
+.project .num, .chip { display: none; }
+.project .title-row { display: block; }
+.project h3 { display: inline; font-family: var(--sans); font-size: 0.94rem; font-weight: 500; letter-spacing: 0; line-height: 1.5; }
+.project .tagline { display: inline; margin-left: 0.28rem; font-family: var(--sans); font-size: 0.94rem; color: var(--muted); }
+.project .tagline::before { content: "— "; }
+.project .desc { max-width: 42rem; margin-top: 0.3rem; font-size: 0.94rem; line-height: 1.7; color: var(--ink); }
+.project .stack { display: none; }
+.agent-work-wrap { max-width: 52rem; }
+.agent-day { border: 0; }
+.agent-day summary { padding: 0.45rem 0; color: var(--ink); font-family: var(--sans); font-size: 0.94rem; text-decoration: underline; text-underline-offset: 0.15em; }
+.agent-day-body { padding-top: 1.2rem; }
+.agent-graph-stage { height: min(65vh, 46rem); min-height: 31rem; border-top: 1px solid var(--ink); }
+.agent-detail-table { font-size: 0.82rem; }
+.agent-detail-table th, .agent-detail-table td { padding: 0.5rem 0; }
+footer { margin-top: 4rem; }
+footer .wrap { padding-bottom: 1.8rem; }
+@media (max-width: 560px) {
+  .wrap { padding: 0 1.4rem; }
+  .site-head .wrap { padding-top: 1.2rem; }
+  .hero { padding-top: 4.5rem; }
+  .agent-graph-stage { height: 36rem; min-height: 0; }
+}
+
+/* ============================================================
    Learnings / curriculum
    ============================================================ */
 .page-title { padding: 4rem 0 2rem; }
