@@ -131,7 +131,9 @@ p { margin: 22px 0 0; }
 .project-card > p:last-child { color: var(--muted); font-size: 13px; }
 
 .work-intro { max-width: 690px; color: var(--muted); }
-.agent-day { margin-top: 20px; border-block: 1px solid var(--border); }
+.worklog-days { margin-top: 20px; border-top: 1px solid var(--border); }
+.worklog-loading { margin: 0; padding: 18px 0; color: var(--muted); font-size: 12px; }
+.agent-day { border-bottom: 1px solid var(--border); }
 .agent-day > summary {
   display: flex;
   justify-content: space-between;
@@ -147,6 +149,7 @@ p { margin: 22px 0 0; }
 .agent-day > summary > span:first-of-type { margin-right: auto; }
 .day-project { margin-right: auto; color: var(--muted); }
 .summary-usage { color: var(--muted); font-variant-numeric: tabular-nums; }
+.agent-day-body { padding-bottom: 4px; }
 
 .usage-strip {
   display: grid;
@@ -158,6 +161,25 @@ p { margin: 22px 0 0; }
 .usage-strip div + div { border-left: 1px solid var(--border); }
 .usage-strip strong { display: block; font-size: 17px; line-height: 1.1; font-weight: 500; font-variant-numeric: tabular-nums; }
 .usage-strip span { display: block; margin-top: 8px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+.task-index { padding: 18px 0; border-bottom: 1px solid var(--border); }
+.task-group + .task-group { margin-top: 18px; }
+.task-group h3 { color: var(--muted); font: 600 9px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: 0.09em; text-transform: uppercase; }
+.task-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 7px; margin-top: 8px; }
+.task-button {
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--foreground);
+  background: var(--background);
+  text-align: left;
+  cursor: pointer;
+}
+.task-button:hover, .task-button.is-active { border-color: var(--reasoning); }
+.task-button.is-active { background: color-mix(in srgb, var(--reasoning) 8%, var(--background)); }
+.task-button strong { display: block; overflow: hidden; font-size: 11px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.task-button span { display: block; margin-top: 5px; color: var(--muted); font: 9px ui-monospace, SFMono-Regular, Consolas, monospace; }
 
 .trace-toolbar {
   display: flex;
@@ -194,6 +216,8 @@ p { margin: 22px 0 0; }
 .agent-node.is-collapsed { stroke-dasharray: 3 2; }
 .agent-node-label { fill: var(--foreground); font: 600 11px Arial, Helvetica, sans-serif; pointer-events: none; text-anchor: middle; }
 .agent-node-meta { fill: var(--muted); font: 9px ui-monospace, SFMono-Regular, Consolas, monospace; pointer-events: none; text-anchor: middle; }
+.agent-node-label.inside { fill: #ffffff; }
+.agent-node-meta.inside { fill: color-mix(in srgb, #ffffff 78%, transparent); }
 .agent-graph-tooltip {
   position: absolute;
   z-index: 2;
@@ -242,7 +266,9 @@ footer { margin-top: auto; width: 100%; padding: 0 40px 22px; color: var(--muted
   .usage-strip div:nth-child(4) { border-top: 1px solid var(--border); }
   .trace-toolbar { align-items: flex-start; flex-direction: column; }
   .trace-toolbar p { text-align: left; }
-  .agent-day > summary { font-size: 11px; }
+  .agent-day > summary { gap: 8px; font-size: 11px; }
+  .day-project { max-width: 42%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .task-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

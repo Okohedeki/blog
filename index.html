@@ -70,56 +70,15 @@
 
       <p class="work-intro">Agent work and token usage, grouped by date.</p>
 
-      <details class="agent-day" id="day-2026-07-16" open>
-        <summary>
-          <time datetime="2026-07-16">July 16, 2026</time>
-          <span class="day-project">AutoTrainer V1</span>
-          <span class="summary-usage">261.1M</span>
-        </summary>
-
-        <div class="usage-strip" aria-label="Token usage summary">
-          <div><strong>261.1M</strong><span>combined tokens</span></div>
-          <div><strong>120.3M</strong><span>main thread</span></div>
-          <div><strong>140.8M</strong><span>subagents</span></div>
-          <div><strong>26</strong><span>named agents</span></div>
-        </div>
-
-        <div class="trace-toolbar">
-          <div class="trace-legend" aria-label="Graph legend">
-            <span><i class="legend-mark reasoning"></i> main</span>
-            <span><i class="legend-mark subagent"></i> subagent</span>
-          </div>
-          <p>Select a main node to collapse its subagents. Scroll to zoom; drag to pan.</p>
-        </div>
-
-        <div class="trace-layout">
-          <div class="agent-graph-stage" id="agent-graph-stage">
-            <svg id="agent-work-graph" viewBox="0 0 1100 980" role="img" aria-labelledby="agent-graph-title agent-graph-desc">
-              <title id="agent-graph-title">Edeki Okoh’s agent work graph for July 16, 2026</title>
-              <desc id="agent-graph-desc">An interactive graph showing one main thread, six workstreams, and 26 subagent conversations.</desc>
-              <g id="agent-graph-viewport"></g>
-            </svg>
-            <div class="agent-graph-tooltip" id="agent-graph-tooltip" hidden></div>
-          </div>
-
-          <aside class="agent-graph-detail" id="agent-graph-detail" aria-live="polite">
-            <p class="detail-kicker">Selected node</p>
-            <h3 id="agent-detail-title">Build session</h3>
-            <p class="detail-label">Retained output summary</p>
-            <p id="agent-detail-description">Select a node to inspect the retained work summary and metadata.</p>
-            <p class="detail-availability">The public snapshot omits raw prompts and private reasoning. Assignment text is shown only when a privacy-safe summary was retained.</p>
-            <dl id="agent-detail-metadata"></dl>
-          </aside>
-        </div>
-
-        <p class="work-note">Summaries only. Private reasoning and raw prompts are excluded. <a href="./worklog/2026-07-16.json">JSON</a></p>
-      </details>
+      <div class="worklog-days" id="worklog-days" aria-live="polite">
+        <p class="worklog-loading">Loading dates…</p>
+      </div>
+      <noscript><p class="work-note">JavaScript is required for the interactive worklog.</p></noscript>
     </section>
   </main>
 
   <footer>© 2026 — Edeki Okoh.</footer>
 
-  <script src="./worklog/2026-07-16.js"></script>
   <script src="./worklog/agent-graph.js"></script>
   <script>
     (function () {

@@ -5,7 +5,8 @@ zero dependencies, and system fonts only. Writing lives on Substack, not here.
 
 - **`index.html`** — home: introduction, projects, and the dated agent showcase.
 - **`learnings/index.html`** — staged curriculum page (currently: GPU / CUDA kernel development).
-- **`worklog/`** — manually published daily agent-work graph snapshots and the shared renderer.
+- **`worklog/`** — compact daily agent-work projections, their date index, and the shared renderer.
+- **`scripts/build_worklog.py`** — converts the local audit archive into public daily data.
 - **`home.css`** — the minimal homepage and agent-showcase design.
 
 ## Run it locally
@@ -23,10 +24,19 @@ The project cards in `index.html` are written by hand. Edit the
 
 ## Agent work log
 
-The homepage presents agent work newest-first, one dated entry at a time. Each public entry
-has a matching JSON snapshot and JavaScript data file under `worklog/`. The snapshots include
-only retained summaries and usage selected for public display; private reasoning and raw
-prompts remain excluded.
+The homepage presents agent work newest-first and lazy-loads one compact JSON file per day.
+The full local audit archive is not copied into the repository. Public files include only
+sanitized summaries, task and subagent topology, status, model, timestamps, and retained token
+counts. Raw prompts, full outputs, local paths, credentials, and private reasoning are excluded.
+
+Refresh the public projection with:
+
+```powershell
+py -3.11 scripts/build_worklog.py
+```
+
+The script writes `worklog/index.json` and `worklog/days/YYYY-MM-DD.json`. Keeping each day
+immutable after it closes avoids repeatedly rewriting one large data file in Git history.
 
 ## Deploy
 
