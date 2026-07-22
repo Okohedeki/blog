@@ -3,173 +3,136 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
   <title>Edeki Okoh — Software Engineer</title>
-  <meta name="description" content="Edeki Okoh — software engineer building AI agent runtimes, persistent agent computers, and self-growing knowledge systems. Selected work.">
+  <meta name="description" content="Edeki Okoh is a software engineer with a background in mathematics, economics, computational astrophysics, and financial services.">
   <meta property="og:title" content="Edeki Okoh — Software Engineer">
-  <meta property="og:description" content="Building AI agent runtimes, local-first apps, and ML systems.">
+  <meta property="og:description" content="Software, research, and public traces of work with coding agents.">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
-  <header class="site-head">
-    <div class="wrap">
-      <a class="brand" href="./index.html"><span class="mark">EO</span> edeki okoh</a>
-      <nav class="nav">
-        <a href="./learnings/index.html">Learnings</a>
-        <a href="https://github.com/Okohedeki">GitHub</a>
-      </nav>
-    </div>
-  </header>
+  <nav class="controls" aria-label="Site controls">
+    <a href="https://github.com/Okohedeki" aria-label="Open GitHub profile">GH</a>
+    <a href="./learnings/index.html" aria-label="Open learnings">L</a>
+    <button type="button" id="theme-toggle" aria-label="Toggle color theme">◐</button>
+  </nav>
 
   <main>
-    <!-- ===== Hero ===== -->
-    <section class="hero">
-      <div class="wrap">
-        <p class="kicker">Software Engineer</p>
-        <h1>Edeki Okoh — Software Engineer.</h1>
-        <p class="lede">
-          Engineering focused on databases and AI.
-        </p>
-        <p class="contact-line"><a href="mailto:okohedeki@gmail.com">okohedeki@gmail.com</a></p>
+    <header class="intro prose">
+      <p class="eyebrow">Edeki Okoh</p>
+      <h1>Software engineer, recovering wet-lab researcher, CRPG addict.</h1>
+
+      <p class="lede">I build software around databases, AI systems, agent infrastructure, and financial services.</p>
+
+      <p>I earned a dual degree in mathematics and economics from Arizona State University. As an undergraduate, I researched HIV vaccine vectors in <a href="https://search.asu.edu/profile/116491">Professor Bertram Jacobs’s lab</a> at the Biodesign Institute—and learned that I hated working in wet labs.</p>
+
+      <p>I moved to <a href="https://search.asu.edu/profile/37290">Professor Carl Gardner’s computational mathematics group</a>, where I modeled the irradiated astrophysical jets HH 901 and HH 902. That work made the direction clear: less pipetting, more computation.</p>
+
+      <p>I started my career as an accounting consultant specializing in stock-based compensation. Today, I work on the financial-services software team at a payroll company.</p>
+
+      <p>Outside work, I build strange software and lose unreasonable amounts of time to CRPGs.</p>
+
+      <p class="contact-line"><a href="https://github.com/Okohedeki">GitHub</a> · <a href="./learnings/index.html">Learnings</a> · <a href="mailto:okohedeki@gmail.com">Email</a></p>
+    </header>
+
+    <section class="projects" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <h2 id="projects-title">Selected work.</h2>
+        <span>Three projects I keep returning to.</span>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <p class="project-index">01 / model training</p>
+          <h3><a href="https://github.com/Okohedeki/AutoTrainer">AutoTrainer <span aria-hidden="true">↗</span></a></h3>
+          <p>Train and verify specialized 9B frontend models with QLoRA and reinforcement learning on one consumer GPU.</p>
+        </article>
+
+        <article class="project-card">
+          <p class="project-index">02 / knowledge systems</p>
+          <h3><a href="https://github.com/Okohedeki/markov-engine">markov-engine <span aria-hidden="true">↗</span></a></h3>
+          <p>A self-growing knowledge engine that turns saved links into living, agent-readable chains of ideas.</p>
+        </article>
+
+        <article class="project-card">
+          <p class="project-index">03 / agent infrastructure</p>
+          <h3><a href="https://github.com/Okohedeki/airlock">Airlock <span aria-hidden="true">↗</span></a></h3>
+          <p>Contract and deployment tooling for running agent frameworks as controlled, self-hosted services.</p>
+        </article>
       </div>
     </section>
 
-    <!-- ===== Selected work ===== -->
-    <section class="section" id="work">
-      <div class="wrap">
-        <div class="section-head">
-          <h2><span class="idx">01</span> Projects</h2>
-          <span class="note">what I'm building, and why</span>
+    <section class="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <h2 id="work-title">Agent work.</h2>
+        <span>Privacy-safe, retained, and inspectable.</span>
+      </div>
+
+      <p class="work-intro">A public trace of one build session: surfaced decisions, delegated subchains, and exact observed usage. These are concise work summaries—not private chain-of-thought.</p>
+
+      <details class="agent-day" id="agent-day" open>
+        <summary>
+          <span><time datetime="2026-07-16">July 16, 2026</time> · AutoTrainer V1</span>
+          <span class="summary-usage">261.1M tokens</span>
+        </summary>
+
+        <div class="usage-strip" aria-label="Token usage summary">
+          <div><strong>261.1M</strong><span>combined tokens</span></div>
+          <div><strong>120.3M</strong><span>main reasoning chain</span></div>
+          <div><strong>140.8M</strong><span>delegated subchains</span></div>
+          <div><strong>26</strong><span>named agents</span></div>
         </div>
 
-        <article class="project">
-          <span class="num">01</span>
-          <div class="body">
-            <div class="title-row">
-              <h3>OpenFleet</h3>
-              <span class="tagline">persistent agent computers</span>
-            </div>
-            <p class="desc">
-              I want to code at night without leaving my own PC running. OpenFleet is a
-              mobile-first control plane for always-on agent machines I can reach from my phone.
-            </p>
-            <div class="stack">
-              <span class="chip status">private · in progress</span>
-            </div>
+        <div class="trace-toolbar">
+          <div class="trace-legend" aria-label="Graph legend">
+            <span><i class="legend-mark reasoning"></i> reasoning</span>
+            <span><i class="legend-mark subagent"></i> subagent</span>
           </div>
-        </article>
-
-        <article class="project">
-          <span class="num">02</span>
-          <div class="body">
-            <div class="title-row">
-              <h3>Ocra</h3>
-              <span class="tagline">voice-driven agent orchestrator</span>
-            </div>
-            <p class="desc">
-              Voice beats typing for steering an agent, and juggling a wall of ghostly terminals at
-              once is too straining. Ocra runs several Claude Code sessions and lets me just talk to them.
-            </p>
-            <div class="stack">
-              <span class="chip status">private</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <span class="num">03</span>
-          <div class="body">
-            <div class="title-row">
-              <h3><a href="https://github.com/Okohedeki/markov-engine">markov <span class="ext">↗</span></a></h3>
-              <span class="tagline">self-growing knowledge engine</span>
-            </div>
-            <p class="desc">
-              I've always wanted a real self-learning loop. markov takes the links I save, clusters
-              them into living Chains of knowledge, and keeps growing them on its own — the open
-              engine behind it lives in <code>markov-engine</code>.
-            </p>
-            <div class="stack">
-              <span class="chip status">open source</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <span class="num">04</span>
-          <div class="body">
-            <div class="title-row">
-              <h3><a href="https://github.com/Okohedeki/airlock">airlock <span class="ext">↗</span></a></h3>
-              <span class="tagline">self-hosted agent runtime</span>
-            </div>
-            <p class="desc">
-              I wanted to host my own local agents as real, controlled services. It works end-to-end —
-              but I've hit an inflection point and need to commit to a direction before taking it further.
-            </p>
-            <div class="stack">
-              <span class="chip status">public · deciding direction</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <span class="num">05</span>
-          <div class="body">
-            <div class="title-row">
-              <h3>Polyvox</h3>
-              <span class="tagline">videos dubbed in your own voice</span>
-            </div>
-            <p class="desc">
-              I want my content to reach people who don't speak my language. Polyvox
-              transcribes a video, translates it, and re-voices it across languages —
-              in my own voice — so I can upload once and publish everywhere.
-            </p>
-            <div class="stack">
-              <span class="chip status">private · in progress</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===== Daily agent work ===== -->
-    <section class="section" id="agent-work">
-      <div class="wrap agent-work-wrap">
-        <div class="section-head">
-          <h2><span class="idx">02</span> Agent work</h2>
-          <span class="note">latest day</span>
+          <p>Select a reasoning node to collapse its subchains. Scroll to zoom; drag to pan.</p>
         </div>
-        <details class="agent-day" id="agent-day">
-          <summary><time datetime="2026-07-14">July 14, 2026</time></summary>
-          <div class="agent-day-body">
-            <div class="agent-graph-stage" id="agent-graph-stage">
-              <svg id="agent-work-graph" viewBox="0 0 1240 840" role="img" aria-labelledby="agent-graph-title agent-graph-desc">
-                <title id="agent-graph-title">Edeki Okoh's agent work graph for July 14, 2026</title>
-                <desc id="agent-graph-desc">A delegation tree showing a coordinator, its workstreams, and their delegated conversations. Select any node for its published record.</desc>
-                <g id="agent-graph-viewport"></g>
-              </svg>
-              <div class="agent-graph-tooltip" id="agent-graph-tooltip" hidden></div>
-            </div>
-            <div class="agent-graph-detail" id="agent-graph-detail" aria-live="polite">
-              <p>Select a task or agent to inspect its conversation record.</p>
-              <table class="agent-detail-table" hidden>
-                <caption>Selected conversation</caption>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
-        </details>
-      </div>
-    </section>
 
+        <div class="trace-layout">
+          <div class="agent-graph-stage" id="agent-graph-stage">
+            <svg id="agent-work-graph" viewBox="0 0 1100 980" role="img" aria-labelledby="agent-graph-title agent-graph-desc">
+              <title id="agent-graph-title">Edeki Okoh’s agent work graph for July 16, 2026</title>
+              <desc id="agent-graph-desc">An interactive graph showing one main reasoning chain, six workstreams, and 26 delegated subagent conversations.</desc>
+              <g id="agent-graph-viewport"></g>
+            </svg>
+            <div class="agent-graph-tooltip" id="agent-graph-tooltip" hidden></div>
+          </div>
+
+          <aside class="agent-graph-detail" id="agent-graph-detail" aria-live="polite">
+            <p class="detail-kicker">Selected node</p>
+            <h3 id="agent-detail-title">Build session</h3>
+            <p class="detail-label">Retained output summary</p>
+            <p id="agent-detail-description">Select a node to inspect the retained work summary and metadata.</p>
+            <p class="detail-availability">The public snapshot omits raw prompts and private reasoning. Assignment text is shown only when a privacy-safe summary was retained.</p>
+            <dl id="agent-detail-metadata"></dl>
+          </aside>
+        </div>
+
+        <p class="work-note">The graph reads a flat node list with explicit <code>type</code> and <code>parentId</code> fields plus separate edges. <a href="./worklog/2026-07-16.json">View the public JSON snapshot</a>.</p>
+      </details>
+    </section>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <span class="copy">© 2026 Edeki Okoh — built by hand, no framework.</span>
-      <a class="email" href="mailto:okohedeki@gmail.com">okohedeki@gmail.com</a>
-    </div>
-  </footer>
-  <script src="./worklog/2026-07-14.js"></script>
+  <footer>© 2026 — Edeki Okoh.</footer>
+
+  <script src="./worklog/2026-07-16.js"></script>
   <script src="./worklog/agent-graph.js"></script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var button = document.getElementById("theme-toggle");
+      var saved = localStorage.getItem("theme");
+      if (saved === "dark" || saved === "light") root.dataset.theme = saved;
+      button.addEventListener("click", function () {
+        var current = root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        root.dataset.theme = current === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", root.dataset.theme);
+      });
+    }());
+  </script>
 </body>
 </html>
