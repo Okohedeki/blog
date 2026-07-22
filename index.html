@@ -20,18 +20,17 @@
 
   <main>
     <header class="intro prose">
-      <p class="eyebrow">Edeki Okoh</p>
-      <h1>Software engineer, recovering wet-lab researcher, CRPG addict.</h1>
+      <h1>Edeki Okoh.</h1>
 
-      <p class="lede">I build software around databases, AI systems, agent infrastructure, and financial services.</p>
+      <p class="lede">Software engineer working on databases, AI systems, agent infrastructure, and financial services.</p>
 
-      <p>I earned a dual degree in mathematics and economics from Arizona State University. As an undergraduate, I researched HIV vaccine vectors in <a href="https://search.asu.edu/profile/116491">Professor Bertram Jacobs’s lab</a> at the Biodesign Institute—and learned that I hated working in wet labs.</p>
+      <p>I earned a dual degree in mathematics and economics from Arizona State University. I did undergraduate research on HIV vaccine vectors in <a href="https://search.asu.edu/profile/116491">Professor Bertram Jacobs’s lab</a> at the Biodesign Institute.</p>
 
-      <p>I moved to <a href="https://search.asu.edu/profile/37290">Professor Carl Gardner’s computational mathematics group</a>, where I modeled the irradiated astrophysical jets HH 901 and HH 902. That work made the direction clear: less pipetting, more computation.</p>
+      <p>I left wet-lab research and joined <a href="https://search.asu.edu/profile/37290">Professor Carl Gardner’s computational mathematics group</a>, where I modeled the astrophysical jets HH 901 and HH 902.</p>
 
       <p>I started my career as an accounting consultant specializing in stock-based compensation. Today, I work on the financial-services software team at a payroll company.</p>
 
-      <p>Outside work, I build strange software and lose unreasonable amounts of time to CRPGs.</p>
+      <p>I am a CRPG addict.</p>
 
       <p class="contact-line"><a href="https://github.com/Okohedeki">GitHub</a> · <a href="./learnings/index.html">Learnings</a> · <a href="mailto:okohedeki@gmail.com">Email</a></p>
     </header>
@@ -65,38 +64,39 @@
 
     <section class="work" aria-labelledby="work-title">
       <div class="section-heading">
-        <h2 id="work-title">Agent work.</h2>
-        <span>Privacy-safe, retained, and inspectable.</span>
+        <h2 id="work-title">Agent showcase.</h2>
+        <span>Newest first.</span>
       </div>
 
-      <p class="work-intro">A public trace of one build session: surfaced decisions, delegated subchains, and exact observed usage. These are concise work summaries—not private chain-of-thought.</p>
+      <p class="work-intro">Agent work and token usage, grouped by date.</p>
 
-      <details class="agent-day" id="agent-day" open>
+      <details class="agent-day" id="day-2026-07-16" open>
         <summary>
-          <span><time datetime="2026-07-16">July 16, 2026</time> · AutoTrainer V1</span>
-          <span class="summary-usage">261.1M tokens</span>
+          <time datetime="2026-07-16">July 16, 2026</time>
+          <span class="day-project">AutoTrainer V1</span>
+          <span class="summary-usage">261.1M</span>
         </summary>
 
         <div class="usage-strip" aria-label="Token usage summary">
           <div><strong>261.1M</strong><span>combined tokens</span></div>
-          <div><strong>120.3M</strong><span>main reasoning chain</span></div>
-          <div><strong>140.8M</strong><span>delegated subchains</span></div>
+          <div><strong>120.3M</strong><span>main thread</span></div>
+          <div><strong>140.8M</strong><span>subagents</span></div>
           <div><strong>26</strong><span>named agents</span></div>
         </div>
 
         <div class="trace-toolbar">
           <div class="trace-legend" aria-label="Graph legend">
-            <span><i class="legend-mark reasoning"></i> reasoning</span>
+            <span><i class="legend-mark reasoning"></i> main</span>
             <span><i class="legend-mark subagent"></i> subagent</span>
           </div>
-          <p>Select a reasoning node to collapse its subchains. Scroll to zoom; drag to pan.</p>
+          <p>Select a main node to collapse its subagents. Scroll to zoom; drag to pan.</p>
         </div>
 
         <div class="trace-layout">
           <div class="agent-graph-stage" id="agent-graph-stage">
             <svg id="agent-work-graph" viewBox="0 0 1100 980" role="img" aria-labelledby="agent-graph-title agent-graph-desc">
               <title id="agent-graph-title">Edeki Okoh’s agent work graph for July 16, 2026</title>
-              <desc id="agent-graph-desc">An interactive graph showing one main reasoning chain, six workstreams, and 26 delegated subagent conversations.</desc>
+              <desc id="agent-graph-desc">An interactive graph showing one main thread, six workstreams, and 26 subagent conversations.</desc>
               <g id="agent-graph-viewport"></g>
             </svg>
             <div class="agent-graph-tooltip" id="agent-graph-tooltip" hidden></div>
@@ -112,7 +112,7 @@
           </aside>
         </div>
 
-        <p class="work-note">The graph reads a flat node list with explicit <code>type</code> and <code>parentId</code> fields plus separate edges. <a href="./worklog/2026-07-16.json">View the public JSON snapshot</a>.</p>
+        <p class="work-note">Summaries only. Private reasoning and raw prompts are excluded. <a href="./worklog/2026-07-16.json">JSON</a></p>
       </details>
     </section>
   </main>

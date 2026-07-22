@@ -2,15 +2,15 @@
 
 :root {
   color-scheme: light;
-  --background: #f7f7f4;
+  --background: #ffffff;
   --surface: #ffffff;
   --foreground: #111111;
   --muted: #6d6d68;
   --faint: #9c9c96;
   --border: #dcdcd5;
   --border-soft: #e9e9e4;
-  --reasoning: #111111;
-  --subagent: #6d5ce7;
+  --reasoning: #2563eb;
+  --subagent: #8b8b84;
   --selected: #e15b35;
   font-family: Arial, Helvetica, sans-serif;
   font-synthesis: none;
@@ -25,8 +25,8 @@
   --faint: #77766f;
   --border: #363632;
   --border-soft: #272724;
-  --reasoning: #f1f1ed;
-  --subagent: #9d91ff;
+  --reasoning: #78a7ff;
+  --subagent: #9b9b94;
   --selected: #ff8b68;
 }
 
@@ -40,8 +40,8 @@
     --faint: #77766f;
     --border: #363632;
     --border-soft: #272724;
-    --reasoning: #f1f1ed;
-    --subagent: #9d91ff;
+    --reasoning: #78a7ff;
+    --subagent: #9b9b94;
     --selected: #ff8b68;
   }
 }
@@ -95,7 +95,7 @@ code { font: 0.88em ui-monospace, SFMono-Regular, Consolas, monospace; }
 
 main { width: 100%; max-width: 1100px; padding: 72px 40px 80px; }
 .prose { max-width: 690px; }
-.eyebrow, .project-index, .detail-kicker {
+.project-index, .detail-kicker {
   margin: 0;
   color: var(--muted);
   font: 600 10px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
@@ -104,14 +104,14 @@ main { width: 100%; max-width: 1100px; padding: 72px 40px 80px; }
 }
 
 h1, h2, h3 { margin: 0; letter-spacing: -0.02em; }
-h1 { max-width: 650px; margin-top: 18px; font-size: clamp(30px, 5vw, 52px); line-height: 1.06; font-weight: 600; }
+h1 { max-width: 650px; font-size: 28px; line-height: 1.15; font-weight: 600; }
 h2 { font-size: 15px; line-height: 1.4; font-weight: 600; }
 h3 { font-size: 17px; line-height: 1.35; font-weight: 600; }
 p { margin: 22px 0 0; }
-.lede { max-width: 620px; margin-top: 30px; color: var(--muted); font-size: 19px; line-height: 1.55; }
+.lede { max-width: 620px; margin-top: 24px; color: var(--muted); font-size: 16px; line-height: 1.6; }
 .contact-line { font-size: 13px; }
 
-.projects, .work { margin-top: 84px; }
+.projects, .work { margin-top: 68px; }
 .section-heading {
   display: flex;
   align-items: baseline;
@@ -123,7 +123,7 @@ p { margin: 22px 0 0; }
 .section-heading span { color: var(--muted); font-size: 12px; }
 
 .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.project-card { min-height: 220px; padding: 24px 24px 28px 0; border-bottom: 1px solid var(--border); }
+.project-card { min-height: 180px; padding: 22px 22px 24px 0; border-bottom: 1px solid var(--border); }
 .project-card + .project-card { padding-left: 24px; border-left: 1px solid var(--border); }
 .project-card h3 { margin-top: 22px; }
 .project-card h3 a { text-decoration: none; }
@@ -131,7 +131,7 @@ p { margin: 22px 0 0; }
 .project-card > p:last-child { color: var(--muted); font-size: 13px; }
 
 .work-intro { max-width: 690px; color: var(--muted); }
-.agent-day { margin-top: 28px; border-block: 1px solid var(--border); }
+.agent-day { margin-top: 20px; border-block: 1px solid var(--border); }
 .agent-day > summary {
   display: flex;
   justify-content: space-between;
@@ -145,6 +145,7 @@ p { margin: 22px 0 0; }
 .agent-day > summary::before { content: "+"; width: 16px; color: var(--muted); }
 .agent-day[open] > summary::before { content: "−"; }
 .agent-day > summary > span:first-of-type { margin-right: auto; }
+.day-project { margin-right: auto; color: var(--muted); }
 .summary-usage { color: var(--muted); font-variant-numeric: tabular-nums; }
 
 .usage-strip {
@@ -153,9 +154,9 @@ p { margin: 22px 0 0; }
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
-.usage-strip div { padding: 20px 18px; }
+.usage-strip div { padding: 16px 14px; }
 .usage-strip div + div { border-left: 1px solid var(--border); }
-.usage-strip strong { display: block; font-size: 22px; line-height: 1.1; font-weight: 500; font-variant-numeric: tabular-nums; }
+.usage-strip strong { display: block; font-size: 17px; line-height: 1.1; font-weight: 500; font-variant-numeric: tabular-nums; }
 .usage-strip span { display: block; margin-top: 8px; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
 
 .trace-toolbar {
@@ -177,8 +178,9 @@ p { margin: 22px 0 0; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
   min-height: 650px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--background);
 }
 .agent-graph-stage { position: relative; min-width: 0; height: 650px; overflow: hidden; cursor: grab; touch-action: none; }
 .agent-graph-stage.is-dragging { cursor: grabbing; }

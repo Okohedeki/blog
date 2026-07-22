@@ -65,8 +65,8 @@
   }
 
   function typeLabel(node) {
-    if (node.type === "subagent") return "Delegated subchain";
-    return node.role === "coordinator" ? "Main reasoning chain" : "Reasoning workstream";
+    if (node.type === "subagent") return "Subagent";
+    return node.role === "coordinator" ? "Main thread" : "Workstream";
   }
 
   function applyTransform() {
@@ -250,7 +250,7 @@
   stage.addEventListener("pointerup", endDrag);
   stage.addEventListener("pointercancel", endDrag);
 
-  document.getElementById("agent-day").addEventListener("toggle", function (event) {
+  document.getElementById("day-2026-07-16").addEventListener("toggle", function (event) {
     if (event.currentTarget.open) window.requestAnimationFrame(fitGraph);
   });
 
