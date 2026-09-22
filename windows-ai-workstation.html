@@ -9,7 +9,7 @@
   <meta property="og:description" content="A native Windows interface for AI tasks, explicit approvals, and local history. Early developer preview.">
   <meta property="og:type" content="article">
   <link rel="canonical" href="https://okohedeki.github.io/blog/windows-ai-workstation.html">
-  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="folio.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -19,13 +19,13 @@
   </nav>
   <main id="main" tabindex="-1">
     <header class="case-header">
-      <p class="eyebrow">03 / Desktop agents · Developer preview</p>
+      <p class="eyebrow">Desktop agents · Developer preview · C# / WinUI 3</p>
       <h1>Windows AI Workstation</h1>
-      <p class="lede">A native Windows workspace for giving AI a task, reviewing its actions, and keeping the result.</p>
+      <p class="lede">Give an agent a document task. Review its actions. Keep the result and its history.</p>
     </header>
     <article class="case-copy" aria-label="Project notes">
-      <h2>The idea</h2>
-      <p>Make document-oriented agent work available through a native desktop application: choose a folder, describe the task, approve specific actions, and inspect the output.</p>
+      <h2>A task has a lifecycle</h2>
+      <p>Choose a folder and describe the document you need. The application starts a worker for that task. Review its requested actions, inspect the resulting files, and return to the task’s local history later.</p>
       <h2>The first implementation</h2>
       <p>The WinUI 3 application connects to DeepSeek Harness. Each task owns a separate worker, with streaming responses, cancellation, structured approvals, output documents, and local SQLite history.</p>
       <p>The default task profile requests approval for project reads and document writes. It has no shell and cannot edit original project files. Windows credential protection stores the configured connection.</p>
