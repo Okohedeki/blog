@@ -1,12 +1,16 @@
 # Edeki Okoh — personal site
 
 My personal site: four selected projects, a short introduction, and contact links.
-Static HTML/CSS, no build step, no tracking, and system fonts only. The homepage
-and project notes work without JavaScript.
+Static HTML/CSS, no build step, no tracking, and system fonts only. A small
+JavaScript player lets visitors switch between the mix and two supplied voice
+tracks at the same playback position. Native audio and project links remain
+available without JavaScript.
 
 - **`index.html`** — introduction, four projects, background, and contact.
-- **`portfolio.css`** — responsive typography and layout for the portfolio.
-- **`resonance-studio.html`** — prototype notes and an actual sample screenshot.
+- **`folio.css`** — current layout, typography, and listening controls; imports the shared base in `portfolio.css`.
+- **`listen.js`** — audio loading, mix/solo selection, transport, and failure recovery.
+- **`assets/README.md`** — synthetic audio provenance and screenshot context.
+- **`resonance-studio.html`** — current recording editor, preservation behavior, and limitations.
 - **`windows-ai-workstation.html`** — developer-preview scope and limitations.
 - **`worklog.html`** — the historical, interactive agent-work archive.
 - **`worklog/`** — compact daily agent-work projections, their date index, and the shared renderer.
@@ -23,10 +27,24 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 
 ## Projects
 
-The four project rows in `index.html` are written by hand. Edit the
-`<article class="project">` blocks to update them. Keep status labels consistent
+The featured Resonance example and three supporting projects in `index.html`
+are written by hand. Edit the `feature` and `project` articles to update them.
+Keep status labels consistent
 with the source projects. Local prototypes link to public project notes;
 the site does not distribute their source code or unsigned builds.
+
+## Design and verification
+
+The direction draws on Paco Coursey's compact personal site and Rauno Freiberg's
+presentation of actual work: a short introduction, one usable demonstration,
+and direct paths into the projects. Avoid decorative entrance animations,
+generic hero imagery, unverified claims, and fabricated product interfaces.
+
+For UI changes, inspect relevant live references first. Verify the rendered
+homepage and both project pages at 1440, 768, 390, and 320 pixels. Exercise
+keyboard navigation, reduced motion, audio switching at the same position,
+seeking, pause/replay, failed audio loading and retry, and the no-JavaScript
+fallback. Keep the historical archive links working.
 
 ## Agent work log
 
