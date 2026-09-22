@@ -31,29 +31,56 @@
       <p class="intro-note">My current projects explore how we listen, what we remember, and how we put our own computers to work.</p>
     </header>
 
-    <section class="projects" aria-labelledby="projects-title">
+    <section id="selected-work" aria-labelledby="projects-title">
       <div class="section-heading">
-        <h2 id="projects-title">Selected work.</h2>
-        <span>Three projects I keep returning to.</span>
+        <h2 class="section-label" id="projects-title">Selected work</h2>
+        <span>Four projects, in progress.</span>
       </div>
 
-      <div class="project-grid">
-        <article class="project-card">
-          <p class="project-index">01 / model training</p>
-          <h3><a href="https://github.com/Okohedeki/AutoTrainer">AutoTrainer <span aria-hidden="true">↗</span></a></h3>
-          <p>Train and verify specialized 9B frontend models with QLoRA and reinforcement learning on one consumer GPU.</p>
+      <div class="project-list">
+        <article class="project" id="resonance-studio">
+          <p class="project-index" aria-hidden="true">01</p>
+          <div>
+            <h3><a href="resonance-studio.html">Resonance Studio</a></h3>
+            <p>A local studio for speech, acoustics, and video. Find speakers in a recording, listen to one voice, and export individual tracks.</p>
+          </div>
+          <div class="project-meta">
+            <span class="status">Prototype</span>
+            <a class="project-link" href="resonance-studio.html" aria-label="Read about Resonance Studio">Project notes ↗</a>
+          </div>
         </article>
-
-        <article class="project-card">
-          <p class="project-index">02 / knowledge systems</p>
-          <h3><a href="https://github.com/Okohedeki/markov-engine">markov-engine <span aria-hidden="true">↗</span></a></h3>
-          <p>A self-growing knowledge engine that turns saved links into living, agent-readable chains of ideas.</p>
+        <article class="project" id="airlock">
+          <p class="project-index" aria-hidden="true">02</p>
+          <div>
+            <h3><a href="https://github.com/Okohedeki/airlock">Airlock</a></h3>
+            <p>Run agents on your computer and call them through your own HTTPS relay, with access controls, remote approvals, and execution records.</p>
+          </div>
+          <div class="project-meta">
+            <span class="status">Open source</span>
+            <a class="project-link" href="https://github.com/Okohedeki/airlock" aria-label="View Airlock on GitHub">Repository ↗</a>
+          </div>
         </article>
-
-        <article class="project-card">
-          <p class="project-index">03 / agent infrastructure</p>
-          <h3><a href="https://github.com/Okohedeki/airlock">Airlock <span aria-hidden="true">↗</span></a></h3>
-          <p>Contract and deployment tooling for running agent frameworks as controlled, self-hosted services.</p>
+        <article class="project" id="windows-ai-workstation">
+          <p class="project-index" aria-hidden="true">03</p>
+          <div>
+            <h3><a href="windows-ai-workstation.html">Windows AI Workstation</a></h3>
+            <p>A native Windows interface for document-oriented AI tasks. Review individual actions, inspect output documents, and reopen local task history.</p>
+          </div>
+          <div class="project-meta">
+            <span class="status">Developer preview</span>
+            <a class="project-link" href="windows-ai-workstation.html" aria-label="Read about Windows AI Workstation">Project notes ↗</a>
+          </div>
+        </article>
+        <article class="project" id="markov">
+          <p class="project-index" aria-hidden="true">04</p>
+          <div>
+            <h3><a href="https://github.com/Okohedeki/markov-engine">Markov</a></h3>
+            <p>A bookmark app that remembers what you forgot. Save sources and notes, search your archive, and rediscover older ideas with a reason to revisit them.</p>
+          </div>
+          <div class="project-meta">
+            <span class="status">Open source</span>
+            <a class="project-link" href="https://github.com/Okohedeki/markov-engine" aria-label="View Markov on GitHub">Repository ↗</a>
+          </div>
         </article>
       </div>
     </section>
