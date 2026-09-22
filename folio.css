@@ -94,6 +94,7 @@ footer { border: 0; padding-block: 4px 40px; font-size: 12px; }
   .about { grid-template-columns: 1fr; gap: 16px; }
 }
 @media (max-width: 520px) {
+  .feature { gap: 16px; }
   .intro { padding-block: 24px 28px; }
   .intro .lede { font-size: 22px; line-height: 1.5; }
   .feature-copy h3 { font-size: 28px; }
@@ -101,7 +102,7 @@ footer { border: 0; padding-block: 4px 40px; font-size: 12px; }
   .waveform img { height: 96px; }
   .project-list { grid-template-columns: 1fr; gap: 28px; }
   .project p:not(.project-index) { margin-block: 7px; }
-  .sample { padding: 20px 16px; }
+  .sample { padding: 16px; }
   .track-options { gap: 2px; }
   .track-options button { padding-inline: 9px; }
   .transport { gap: 9px; }
