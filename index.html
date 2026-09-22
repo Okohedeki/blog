@@ -3,35 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
+  <meta name="color-scheme" content="light">
   <title>Edeki Okoh — Software Engineer</title>
-  <meta name="description" content="Edeki Okoh is a software engineer with a background in mathematics, economics, computational astrophysics, and financial services.">
+  <meta name="description" content="Edeki Okoh builds software for creative work, personal knowledge, and AI agents. Selected work: Resonance Studio, Airlock, Windows AI Workstation, and Markov.">
   <meta property="og:title" content="Edeki Okoh — Software Engineer">
-  <meta property="og:description" content="Software, research, and public traces of work with coding agents.">
+  <meta property="og:description" content="Software for creative work, personal knowledge, and AI agents. Four projects by Edeki Okoh.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="canonical" href="https://okohedeki.github.io/blog/">
 </head>
 <body>
-  <nav class="controls" aria-label="Site controls">
-    <a href="https://github.com/Okohedeki" aria-label="Open GitHub profile">GH</a>
-    <button type="button" id="theme-toggle" aria-label="Toggle color theme">◐</button>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="wordmark" href="./" aria-label="Edeki Okoh home">Edeki Okoh</a>
+    <div class="nav-links">
+      <a href="https://github.com/Okohedeki">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="mailto:okohedeki@gmail.com">Email <span aria-hidden="true">↗</span></a>
+    </div>
   </nav>
 
-  <main>
-    <header class="intro prose">
+  <main id="main">
+    <header class="intro">
+      <p class="eyebrow">Software engineer · Independent projects</p>
       <h1>Edeki Okoh.</h1>
-
-      <p class="lede">Software engineer working on databases, AI systems, agent infrastructure, and financial services.</p>
-
-      <p>I earned a dual degree in mathematics and economics from Arizona State University. I did undergraduate research on HIV vaccine vectors in <a href="https://search.asu.edu/profile/116491">Professor Bertram Jacobs’s lab</a> at the Biodesign Institute.</p>
-
-      <p>I left wet-lab research and joined <a href="https://search.asu.edu/profile/37290">Professor Carl Gardner’s computational mathematics group</a>, where I modeled the astrophysical jets HH 901 and HH 902.</p>
-
-      <p>I started my career as an accounting consultant specializing in stock-based compensation. Today, I work on the financial-services software team at a payroll company.</p>
-
-      <p>I am a CRPG addict.</p>
-
-      <p class="contact-line"><a href="https://github.com/Okohedeki">GitHub</a> · <a href="mailto:okohedeki@gmail.com">Email</a></p>
+      <p class="lede">I build software for creative work, personal knowledge, and working with AI agents.</p>
+      <p class="intro-note">My current projects explore how we listen, what we remember, and how we put our own computers to work.</p>
     </header>
 
     <section class="projects" aria-labelledby="projects-title">
@@ -79,18 +76,5 @@
   <footer>© 2026 — Edeki Okoh.</footer>
 
   <script src="./worklog/agent-graph.js"></script>
-  <script>
-    (function () {
-      var root = document.documentElement;
-      var button = document.getElementById("theme-toggle");
-      var saved = localStorage.getItem("theme");
-      if (saved === "dark" || saved === "light") root.dataset.theme = saved;
-      button.addEventListener("click", function () {
-        var current = root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-        root.dataset.theme = current === "dark" ? "light" : "dark";
-        localStorage.setItem("theme", root.dataset.theme);
-      });
-    }());
-  </script>
 </body>
 </html>
