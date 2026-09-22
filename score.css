@@ -83,7 +83,7 @@ footer { padding-bottom: 28px; }
   .tempo span { margin-left: 8px; font-size: 10px; }
   .staff { height: 110px; }
   .clef { flex-basis: 30px; font-size: 56px; }
-  .word-note { font-size: 14px; }
+  .word-note { font-size: 16px; }
   .phrase { gap: 3px; padding-right: 9px; }
   .score-reading { gap: 12px; }
   .score-reading > a { font-size: 15px; }
