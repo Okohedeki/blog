@@ -10,19 +10,18 @@
 }
 body { font-size: 16px; line-height: 1.65; }
 .site-nav, main, footer { width: min(100% - 80px, 960px); }
-.site-nav { padding-top: 56px; }
+.site-nav { padding-top: 36px; }
 .wordmark { font-size: 16px; font-weight: 500; letter-spacing: -.025em; }
 .nav-links { gap: 22px; }
 .nav-links a { color: var(--muted); text-decoration: none; }
 .nav-links a:hover { color: var(--accent); text-decoration: underline; }
-.intro { max-width: 700px; padding-block: 58px 56px; }
+.intro { max-width: 720px; padding-block: 38px 42px; }
 .intro h1 { font-size: 17px; font-weight: 500; letter-spacing: 0; }
-.intro .lede { margin-top: 18px; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.55; letter-spacing: -.025em; }
+.intro .lede { max-width: 720px; margin-top: 18px; font-size: clamp(22px, 2.2vw, 26px); line-height: 1.55; letter-spacing: -.025em; }
 .intro em { font-family: Georgia, serif; font-weight: 400; }
 .intro-note { font-size: 14px; margin-top: 20px; }
 .section-heading { border: 0; padding-bottom: 24px; }
-.section-heading h2, .section-label { font: 400 13px/1.6 inherit; text-transform: none; letter-spacing: 0; }
-.section-heading h2 { font-family: inherit; }
+.section-heading h2, .section-label { font-family: inherit; font-size: 13px; font-weight: 400; line-height: 1.6; text-transform: none; letter-spacing: 0; }
 .feature { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; padding-block: 12px 54px; }
 .feature-copy h3 { margin: 5px 0 18px; font: 400 38px/1.12 Georgia, serif; letter-spacing: -.045em; }
 .feature-copy p { color: var(--muted); font-size: 14px; line-height: 1.7; }
@@ -62,7 +61,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .audio-fallback p { font-size: 13px; }
 .project-list { border: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; padding-block: 32px 52px; border-top: 1px solid var(--line); }
 .project { display: block; padding: 0; border: 0; min-width: 0; }
-.project h3 { font: 500 16px/1.5 inherit; letter-spacing: -.02em; }
+.project h3 { font-family: inherit; font-size: 16px; font-weight: 500; line-height: 1.5; letter-spacing: -.02em; }
 .project h3 a { font-size: 16px; }
 .project p:not(.project-index) { font-size: 14px; line-height: 1.7; margin: 12px 0; }
 .project .status { text-transform: none; letter-spacing: 0; font-family: inherit; font-size: 12px; }
