@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Resonance Studio — Edeki Okoh</title>
-  <meta name="description" content="A local studio for speech, acoustics, and video. A prototype by Edeki Okoh for finding speakers and listening to individual voices.">
+  <meta name="description" content="A local recording editor by Edeki Okoh. Work with individual voice layers, adjust a selected moment, compare with the original, and export the mix.">
   <meta property="og:title" content="Resonance Studio — Edeki Okoh">
-  <meta property="og:description" content="Speech, acoustics, and video in one local studio. Explore the prototype and its current scope.">
+  <meta property="og:description" content="One recording, editable voice contributions. Explore the current desktop prototype.">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://okohedeki.github.io/blog/assets/resonance-video.png">
+  <meta property="og:image" content="https://okohedeki.github.io/blog/assets/resonance-editor.png">
   <link rel="canonical" href="https://okohedeki.github.io/blog/resonance-studio.html">
-  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="folio.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -20,24 +20,28 @@
   </nav>
   <main id="main" tabindex="-1">
     <header class="case-header">
-      <p class="eyebrow">01 / Creative tools · Prototype</p>
+      <p class="eyebrow">Creative tools · Prototype · React / Tauri / Python</p>
       <h1>Resonance Studio</h1>
-      <p class="lede">Speech, acoustics, and video in one local studio.</p>
+      <p class="lede">Work with one person’s voice inside a recording.</p>
+      <a class="text-link" href="./#resonance-studio">Listen to the supplied-track example ↗</a>
     </header>
-    <figure>
-      <img src="assets/resonance-video.png" alt="Resonance Studio showing a synthetic two-speaker video, detected speaking turns, and individual voice playback controls." width="1280" height="800">
-      <figcaption>The Video &amp; voices workspace, shown with the built-in synthetic two-speaker sample.</figcaption>
+    <figure class="case-image">
+      <a href="assets/resonance-editor.png" aria-label="Open the full-size Resonance editor screenshot">
+        <img src="assets/resonance-editor.png" alt="The current Resonance editor: two voice layers, a selected time window, an emphasis control, and original-versus-edited playback." width="1440" height="960">
+      </a>
+      <figcaption>The current desktop interface, using the supplied synthetic voice tracks. Open the image to inspect it at full size.</figcaption>
     </figure>
     <article class="case-copy" aria-label="Project notes">
-      <h2>The idea</h2>
-      <p>A recording contains several people, but sometimes you want to follow just one voice. Resonance brings speaker listening into the same workspace as speech editing and acoustics.</p>
-      <h2>The current workflow</h2>
-      <p>Open a video or audio recording, analyze its speakers, assign names, and switch between the original mix and a selected voice. Playback stays synchronized with the video, and individual tracks can be exported as WAV files.</p>
-      <h2>What I’m exploring</h2>
-      <p>Combining local audio processing with a desktop interface that makes analysis, listening, and comparison understandable. The application uses React and Tauri, with a separate Python inference worker.</p>
-      <h2>Where it stands</h2>
-      <p>This is a prototype for clips up to five minutes, including separation of detected two-voice overlap. Speaker names are assigned by the user. Crowded or difficult speech can be misattributed, and separated tracks can contain leakage or artifacts.</p>
-      <p>The Windows build is unsigned; models and the inference worker are separate. This page is a project preview, not a public download.</p>
+      <h2>One voice, one moment</h2>
+      <p>Select a voice layer and a time window, adjust its emphasis, and compare the edited mix with the original. Solo lets you follow a voice on its own. Undo restores the previous edit; export saves the mix as a WAV file.</p>
+      <h2>What the edit preserves</h2>
+      <p>The editor adds only the selected contribution’s level change to the original mix. With supplied tracks, other voice tracks and samples outside the selection stay unchanged. Edits that would clip are rejected.</p>
+      <p>That distinction matters for imported recordings: separated tracks are estimates. Leakage can affect another person’s voice inside overlapping speech, even when the selected layer is the only one being edited.</p>
+      <h2>How it is built</h2>
+      <p>React inside a Tauri desktop application, with a separate local Python worker for speaker analysis and separation. The supplied-track example exercises the editor without running a separation model. Audio and video imports share the same editing canvas.</p>
+      <h2>Current limits</h2>
+      <p>The working edit changes level, not words, voice identity, or room acoustics. Imports are limited to five minutes and 250 MB. Processing and WAV export use mono 16 kHz audio; video is a synchronized preview, not an exported movie.</p>
+      <p>Edits last for the current session. Export before closing. Models and the worker are separate from the unsigned Windows build. This is a project preview; there is no public download yet.</p>
       <p class="status">Project notes · September 2026</p>
       <p><a href="mailto:okohedeki@gmail.com?subject=Resonance%20Studio">Talk about Resonance Studio ↗</a></p>
     </article>
