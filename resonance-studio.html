@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resonance Studio — Edeki Okoh</title>
+  <meta name="description" content="A local studio for speech, acoustics, and video. A prototype by Edeki Okoh for finding speakers and listening to individual voices.">
+  <meta property="og:title" content="Resonance Studio — Edeki Okoh">
+  <meta property="og:description" content="Speech, acoustics, and video in one local studio. Explore the prototype and its current scope.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://okohedeki.github.io/blog/assets/resonance-video.png">
+  <link rel="canonical" href="https://okohedeki.github.io/blog/resonance-studio.html">
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="wordmark" href="./">← Edeki Okoh</a>
+    <div class="nav-links"><a href="mailto:okohedeki@gmail.com">Email ↗</a></div>
+  </nav>
+  <main id="main">
+    <header class="case-header">
+      <p class="eyebrow">01 / Creative tools · Prototype</p>
+      <h1>Resonance Studio</h1>
+      <p class="lede">Speech, acoustics, and video in one local studio.</p>
+    </header>
+    <figure>
+      <img src="assets/resonance-video.png" alt="Resonance Studio showing a synthetic two-speaker video, detected speaking turns, and individual voice playback controls." width="1280" height="800">
+      <figcaption>The Video &amp; voices workspace, shown with the built-in synthetic two-speaker sample.</figcaption>
+    </figure>
+    <article class="case-copy" aria-label="Project notes">
+      <h2>The idea</h2>
+      <p>A recording contains several people, but sometimes you want to follow just one voice. Resonance brings speaker listening into the same workspace as speech editing and acoustics.</p>
+      <h2>The current workflow</h2>
+      <p>Open a video or audio recording, analyze its speakers, assign names, and switch between the original mix and a selected voice. Playback stays synchronized with the video, and individual tracks can be exported as WAV files.</p>
+      <h2>What I’m exploring</h2>
+      <p>Combining local audio processing with a desktop interface that makes analysis, listening, and comparison understandable. The application uses React and Tauri, with a separate Python inference worker.</p>
+      <h2>Where it stands</h2>
+      <p>This is a prototype for clips up to five minutes, including separation of detected two-voice overlap. Speaker names are assigned by the user. Crowded or difficult speech can be misattributed, and separated tracks can contain leakage or artifacts.</p>
+      <p>The Windows build is unsigned; models and the inference worker are separate. This page is a project preview, not a public download.</p>
+      <p class="status">Project notes · September 2026</p>
+      <p><a href="mailto:okohedeki@gmail.com?subject=Resonance%20Studio">Talk about Resonance Studio ↗</a></p>
+    </article>
+  </main>
+  <footer><p>© 2026 Edeki Okoh</p><a href="./#selected-work">All four projects ↗</a></footer>
+</body>
+</html>
