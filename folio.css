@@ -94,6 +94,11 @@ footer { border: 0; padding-block: 4px 40px; font-size: 12px; }
   .about { grid-template-columns: 1fr; gap: 16px; }
 }
 @media (max-width: 520px) {
+  .intro { padding-block: 24px 28px; }
+  .intro .lede { font-size: 22px; line-height: 1.5; }
+  .feature-copy h3 { font-size: 28px; }
+  .feature-copy .text-link { display: none; }
+  .waveform img { height: 96px; }
   .project-list { grid-template-columns: 1fr; gap: 28px; }
   .project p:not(.project-index) { margin-block: 7px; }
   .sample { padding: 20px 16px; }
