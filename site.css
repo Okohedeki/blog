@@ -1,0 +1,130 @@
+:root {
+  --bg: #d6ddcb;
+  --card: #fbf9f3;
+  --ink: #1e211c;
+  --muted: #666a5f;
+  --line: #1e211c;
+  --accent: #c8532b;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+main {
+  width: 100%;
+  max-width: 27rem;
+  padding: 2.5rem 1rem;
+}
+
+.card {
+  padding: 2.25rem 2rem 2rem;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 24px;
+  text-align: center;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto 1.25rem;
+  background: var(--accent);
+  color: var(--card);
+  border-radius: 50%;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.role {
+  margin: 0.4rem 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summary { margin: 0 0 1.75rem; }
+
+.links {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.links a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.links a:hover {
+  background: var(--ink);
+  color: var(--card);
+}
+
+.links strong { font-weight: 600; }
+
+.links span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: inherit;
+  opacity: 0.65;
+  font-size: 0.875rem;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+footer {
+  margin-top: 1.25rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+@media (max-width: 400px) {
+  .card { padding: 2rem 1.25rem 1.5rem; }
+  h1 { font-size: 2.35rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .links a { transition: none; }
+}
